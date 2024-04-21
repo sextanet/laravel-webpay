@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\View\View;
 use SextaNet\LaravelWebpay\Exceptions\MissingToken;
 use SextaNet\LaravelWebpay\Exceptions\RejectedTransaction;
+use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use Transbank\Webpay\WebpayPlus\Transaction;
 
 class LaravelWebpay
@@ -32,6 +33,8 @@ class LaravelWebpay
             $order->amount,
             route('webpay.response'),
         );
+
+        WebpayOrder::create();
 
         return view('webpay::create', compact('create'));
     }
