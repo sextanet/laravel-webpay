@@ -3,6 +3,7 @@
 namespace SextaNet\LaravelWebpay;
 
 use Illuminate\Support\Facades\Route;
+use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
