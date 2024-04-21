@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use SextaNet\LaravelWebpay\Exceptions\MissingToken;
 use SextaNet\LaravelWebpay\Exceptions\RejectedTransaction;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
+use stdClass;
 use Transbank\Webpay\WebpayPlus\Transaction;
 
 class LaravelWebpay
@@ -25,30 +26,34 @@ class LaravelWebpay
         );
     }
 
-    public static function create(\stdClass $order): View
+    public static function create(stdClass $order): View
     {
-        $create = static::instance()->create(
+        $order = WebpayOrder::create([
+            'buy_order' => $order->buy_order,
+            'session_id' => $order->session_id,
+            'amount' => $order->amount,
+        ]);
+
+        $response = static::instance()->create(
             $order->buy_order,
             $order->session_id,
             $order->amount,
             route('webpay.response'),
         );
 
-        WebpayOrder::create();
-
-        return view('webpay::create', compact('create'));
+        return view('webpay::create', compact('response'));
     }
 
-    public static function createOriginal(string $buy_order, string $session_id, string $amount): View
+    public static function createManually(string $buy_order, string $session_id, string $amount): View
     {
-        $create = static::instance()->create(
+        $response = static::instance()->create(
             $buy_order,
             $session_id,
             $amount,
             route('webpay.response'),
         );
 
-        return view('webpay::create', compact('create'));
+        return view('webpay::create', compact('response'));
     }
 
     protected static function validateToken(?string $token): string|Exception

@@ -42,8 +42,8 @@
         {{ config('webpay.texts.creating.content') }}
     </main>
 
-    <form action="{{ $create->getUrl() }}" method="POST" style="display: none;">
-        <input type="hidden" name="TBK_TOKEN" value="{{ $create->getToken() }}">
+    <form action="{{ $response->getUrl() }}" method="POST" style="display: none;">
+        <input type="hidden" name="TBK_TOKEN" value="{{ $response->getToken() }}">
 
         <button>Crear orden en Transbank</button>
     </form>
