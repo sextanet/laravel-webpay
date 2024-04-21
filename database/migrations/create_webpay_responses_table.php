@@ -8,11 +8,9 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('laravel_webpay_table', function (Blueprint $table) {
+        Schema::create('webpay_responses', function (Blueprint $table) {
             $table->id();
-
-            // add fields
-
+            $table->foreignId('order_id')->constrained('webpay_orders');
             $table->timestamps();
         });
     }

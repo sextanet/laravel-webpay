@@ -20,7 +20,10 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
             ->name('laravel-webpay')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_laravel-webpay_table')
+            ->hasMigrations([
+                'create_webpay_orders_table',
+                'create_webpay_responses_table',
+            ])
             ->hasCommand(LaravelWebpayCommand::class);
     }
 
