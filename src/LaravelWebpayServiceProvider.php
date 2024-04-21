@@ -2,9 +2,9 @@
 
 namespace SextaNet\LaravelWebpay;
 
+use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
 
 class LaravelWebpayServiceProvider extends PackageServiceProvider
 {
