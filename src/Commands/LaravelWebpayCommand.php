@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace SextaNet\LaravelWebpay\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelWebpayCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-webpay';
 
     public $description = 'My command';
 
