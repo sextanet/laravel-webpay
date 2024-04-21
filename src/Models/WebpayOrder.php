@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class WebpayOrder extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = [];
 
     public function responses(): HasMany

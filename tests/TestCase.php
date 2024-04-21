@@ -24,7 +24,7 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function migrate(... $files)
+    public function migrate(...$files)
     {
         foreach ($files as $file) {
             $migration = include __DIR__."/../database/migrations/{$file}";
