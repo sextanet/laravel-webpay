@@ -28,7 +28,9 @@ class LaravelWebpay
 
     public static function create(stdClass $order): View
     {
-        $order = WebpayOrder::create([
+        $order = WebpayOrder::updateOrCreate([
+            'buy_order' => $order->buy_order,
+        ], [
             'buy_order' => $order->buy_order,
             'session_id' => $order->session_id,
             'amount' => $order->amount,

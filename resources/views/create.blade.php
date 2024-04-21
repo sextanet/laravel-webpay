@@ -49,7 +49,7 @@
     </form>
 
     <script>
-        {{-- document.querySelector('form').submit(); --}}
+        document.querySelector('form').submit();
     </script>
 </body>
 </html>
