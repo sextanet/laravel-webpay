@@ -2,6 +2,7 @@
 
 namespace SextaNet\LaravelWebpay;
 
+use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
@@ -21,5 +22,14 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigration('create_laravel-webpay_table')
             ->hasCommand(LaravelWebpayCommand::class);
+    }
+
+    public function packageRegistered()
+    {
+        Route::get('webpay/response', function () {
+            $token = $_GET['token_ws'] ?? $_POST['token_ws'] ?? null;
+
+            dd(LaravelWebpay::commit($token));
+        })->name('webpay.response');
     }
 }
