@@ -3,17 +3,16 @@
 namespace SextaNet\LaravelWebpay\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use SextaNet\LaravelWebpay\Models\WebpayResponse;
 
-/*
-class ModelFactory extends Factory
+class WebpayResponseFactory extends Factory
 {
-    protected $model = YourModel::class;
+    protected $model = WebpayResponse::class;
 
     public function definition()
     {
         return [
-
+            //
         ];
     }
 }
-*/
