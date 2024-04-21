@@ -36,6 +36,18 @@ class LaravelWebpay
         return view('webpay::create', compact('create'));
     }
 
+    public static function createOriginal(string $buy_order, string $session_id, string $amount): View
+    {
+        $create = static::instance()->create(
+            $buy_order,
+            $session_id,
+            $amount,
+            route('webpay.response'),
+        );
+
+        return view('webpay::create', compact('create'));
+    }
+
     protected static function validateToken(?string $token): string|Exception
     {
         return $token ?? throw new MissingToken();
