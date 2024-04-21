@@ -40,7 +40,7 @@ class LaravelWebpay
     {
         return $token ?? throw new MissingToken();
     }
-    
+
     public static function commit(?string $token)
     {
         static::validateToken($token);

@@ -11,6 +11,6 @@ return [
         'creating' => [
             'content' => 'Redirecting...',
             'title' => 'Redirecting to Webpay',
-        ]
+        ],
     ],
 ];
