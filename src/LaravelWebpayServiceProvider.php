@@ -34,5 +34,15 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
 
             dd(LaravelWebpay::commit($token));
         })->name('webpay.response');
+
+        Route::any('webpay/response', function () {
+            $buy_order = request('TBK_ORDEN_COMPRA') ?? null;
+
+            return view('webpay::retry', compact('buy_order'));
+        })->name('webpay.response.retry');
+
+        Route::get('webpay/retry/{token}', function (string $token) {
+            return 'Retry order';
+        })->name('webpay.retry');
     }
 }

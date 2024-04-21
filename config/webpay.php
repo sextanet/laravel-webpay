@@ -12,5 +12,9 @@ return [
             'content' => 'Redirecting...',
             'title' => 'Redirecting to Webpay',
         ],
+        'retry' => [
+            'content' => 'Please try again',
+            'title' => 'Retry payment',
+        ],
     ],
 ];
