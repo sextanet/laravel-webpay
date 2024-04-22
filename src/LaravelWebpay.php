@@ -2,9 +2,7 @@
 
 namespace SextaNet\LaravelWebpay;
 
-use Exception;
 use Illuminate\View\View;
-use SextaNet\LaravelWebpay\Exceptions\MissingToken;
 use SextaNet\LaravelWebpay\Exceptions\RejectedTransaction;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use stdClass;
@@ -58,22 +56,20 @@ class LaravelWebpay
         return view('webpay::create', compact('response'));
     }
 
-    protected static function validateToken(?string $token): string|Exception
+    public static function commit(string $token)
     {
-        return $token ?? throw new MissingToken();
-    }
-
-    public static function commit(?string $token)
-    {
-        static::validateToken($token);
-
         $commit = static::instance()
             ->commit($token);
 
         if ($commit->isApproved()) {
-            return $commit;
+            dd($commit);
         }
 
         throw new RejectedTransaction();
+    }
+
+    public static function responseTokenWsNotProvided()
+    {
+        return view('webpay::token_ws_not_provided');
     }
 }

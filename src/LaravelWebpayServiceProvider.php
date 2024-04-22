@@ -31,11 +31,13 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         Route::get('webpay/response', function () {
-            $token = $_GET['token_ws'] ?? $_POST['token_ws'] ?? null;
+            $token = request('token_ws');
 
-            dd($token);
+            if ($token) {
+                return LaravelWebpay::commit($token);
+            }
 
-            dd(LaravelWebpay::commit($token));
+            return LaravelWebpay::responseTokenWsNotProvided();
         })->name('webpay.response');
 
         // Route::any('webpay/response', function () {
