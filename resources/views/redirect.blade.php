@@ -5,10 +5,10 @@
 @section('content')
     {{ config('webpay.texts.creating.content') }}
 
-    <form action="{{ $url }}" method="POST" style="display: none;">
-        <input type="hidden" name="TBK_TOKEN" value="{{ $token }}">
+    <form action="{{ $order->url }}" method="POST" style="display: none;">
+        <input type="hidden" name="TBK_TOKEN" value="{{ $order->token }}">
 
-        <button>Create order</button>
+        <button>Redirect</button>
     </form>
 
     <script>

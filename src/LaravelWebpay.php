@@ -24,23 +24,23 @@ class LaravelWebpay extends BaseWebpay
         );
     }
 
-    public static function create(stdClass $order): View
+    public static function create(stdClass $orderClass): View
     {
-        $stored_order = static::storeOrder($order);
+        $order = static::storeOrder($orderClass);
 
         $response = static::instance()->create(
-            $order->buy_order,
-            $order->session_id,
-            $order->amount,
+            $orderClass->buy_order,
+            $orderClass->session_id,
+            $orderClass->amount,
             route('webpay.response'),
         );
 
         $token = $response->getToken();
         $url = $response->getUrl();
 
-        $stored_order->addTokenWithUrl($token, $url);
+        $order->addTokenWithUrl($token, $url);
 
-        return view('webpay::create', compact('token', 'url'));
+        return view('webpay::redirect', compact('order'));
     }
 
     public static function createManually(string $buy_order, string $session_id, string $amount): View
