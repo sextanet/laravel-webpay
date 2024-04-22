@@ -60,6 +60,15 @@
         .button:hover {
             filter: brightness(0.9);
         }
+
+        code {
+            background: #000;
+            color: #fff;
+            padding: 30px;
+            width: 60%;
+            border-radius: 10px;
+            overflow: scroll;
+        }
     </style>
 </head>
 <body>

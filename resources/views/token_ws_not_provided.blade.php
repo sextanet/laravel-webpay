@@ -12,6 +12,6 @@
     </div>
 
     <code>
-        @dump(request()->all())
+        {{ var_dump(request()->all()) }}
     </code>
 @endsection
