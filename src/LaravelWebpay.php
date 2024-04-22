@@ -52,7 +52,7 @@ class LaravelWebpay
 
         $stored_order->addTokenWithUrl($token, $url);
 
-        return view('webpay::create', compact('response'));
+        return view('webpay::create', compact('token', 'url'));
     }
 
     public static function createManually(string $buy_order, string $session_id, string $amount): View
@@ -113,6 +113,9 @@ class LaravelWebpay
 
     public static function responseTokenWsNotProvided()
     {
-        return view('webpay::token_ws_not_provided');
+        $tbk_token = request('TBK_TOKEN');
+        $order = WebpayOrder::whereToken($tbk_token)->firstOrFail();
+
+        return view('webpay::token_ws_not_provided', compact('order'));
     }
 }

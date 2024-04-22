@@ -5,8 +5,8 @@
 @section('content')
     {{ config('webpay.texts.creating.content') }}
 
-    <form action="{{ $response->getUrl() }}" method="POST" style="display: none;">
-        <input type="hidden" name="TBK_TOKEN" value="{{ $response->getToken() }}">
+    <form action="{{ $url }}" method="POST" style="display: none;">
+        <input type="hidden" name="TBK_TOKEN" value="{{ $token }}">
 
         <button>Create order</button>
     </form>
