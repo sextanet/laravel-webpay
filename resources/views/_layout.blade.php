@@ -7,6 +7,7 @@
     <style>
         :root {
             --primary: #d5006c;
+            --primary-hover: #b0035b;
         }
 
         * {
@@ -58,7 +59,7 @@
         }
 
         .button:hover {
-            filter: brightness(0.9);
+            background: var(--primary-hover);
         }
 
         code {
