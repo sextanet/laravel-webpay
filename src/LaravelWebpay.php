@@ -65,6 +65,9 @@ class LaravelWebpay
 
     public static function storeResponse(TransactionCommitResponse $response)
     {
+        $order = WebpayOrder::where('buy_order', $response->getBuyOrder())
+            ->firstOrFail();
+
         $array = [
             'vci' => $response->getVci(),
             'status' => $response->getStatus(),
@@ -83,7 +86,7 @@ class LaravelWebpay
             'balance' => $response->getBalance(),
         ];
 
-        return WebpayResponse::create($array);
+        return $order->responses()->create($array);
     }
 
     public static function commit(string $token)
