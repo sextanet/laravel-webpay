@@ -65,7 +65,7 @@ class LaravelWebpay
 
     public static function storeResponse(TransactionCommitResponse $response)
     {
-        $order = WebpayOrder::where('buy_order', $response->getBuyOrder())
+        $order = WebpayOrder::findByBuyOrder($response->getBuyOrder())
             ->firstOrFail();
 
         $array = [

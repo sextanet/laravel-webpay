@@ -12,4 +12,4 @@ it('belongs to a response', function () {
 
     expect($response->order)
         ->toBeInstanceOf(WebpayOrder::class);
-})->only();
+});
