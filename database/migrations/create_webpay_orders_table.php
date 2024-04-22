@@ -13,6 +13,8 @@ return new class extends Migration
             $table->string('buy_order')->unique();
             $table->string('session_id');
             $table->float('amount');
+            $table->string('token')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

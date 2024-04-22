@@ -38,13 +38,18 @@ class LaravelWebpay
 
     public static function create(stdClass $order): View
     {
-        static::storeOrder($order);
+        $stored_order = static::storeOrder($order);
 
         $response = static::instance()->create(
             $order->buy_order,
             $order->session_id,
             $order->amount,
             route('webpay.response'),
+        );
+
+        $stored_order->addTokenWithUrl(
+            $response->getToken(),
+            $response->getUrl(),
         );
 
         return view('webpay::create', compact('response'));

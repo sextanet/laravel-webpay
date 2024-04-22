@@ -3,6 +3,18 @@
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use SextaNet\LaravelWebpay\Models\WebpayResponse;
 
+it('adds token with url', function () {
+    $order = WebpayOrder::factory()->create();
+
+    $order->addTokenWithUrl('__TOKEN__', 'https://');
+
+    expect($order->token)
+        ->toBe('__TOKEN__');
+
+    expect($order->url)
+        ->toBe('https://');
+});
+
 describe('find by buyOrder', function () {
     test('exists', function () {
         $order = WebpayOrder::factory()->create([
