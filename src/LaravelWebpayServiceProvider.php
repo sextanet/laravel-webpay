@@ -33,14 +33,16 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
         Route::get('webpay/response', function () {
             $token = $_GET['token_ws'] ?? $_POST['token_ws'] ?? null;
 
+            dd($token);
+
             dd(LaravelWebpay::commit($token));
         })->name('webpay.response');
 
-        Route::any('webpay/response', function () {
-            $session = request('TBK_ID_SESION') ?? null;
+        // Route::any('webpay/response', function () {
+        //     $session = request('TBK_ID_SESION') ?? null;
 
-            return view('webpay::retry', compact('session'));
-        })->name('webpay.response.retry');
+        //     return view('webpay::retry', compact('session'));
+        // })->name('webpay.response.retry');
 
         Route::get('webpay/retry/session/{session_id}', function (string $session_id) {
             $order = WebpayOrder::where('session_id', $session_id)->firstOrFail();
