@@ -31,10 +31,6 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-        Blade::directive('webpayDebug', function ($request) {
-            return view('webpay::_debug')->render();
-        });
-
         Route::get('webpay/response', function () {
             $token = request('token_ws');
 
