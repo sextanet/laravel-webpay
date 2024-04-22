@@ -33,7 +33,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
         Route::get('webpay/response', function () {
             $token = request('token_ws');
 
-            if ($token) {
+            if ($token) { // successfully payment
                 return LaravelWebpay::commit($token);
             }
 
