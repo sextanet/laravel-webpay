@@ -13,7 +13,5 @@
         @endif
     </div>
 
-    {{-- <code>
-        @dump(request()->all())
-    </code> --}}
+    @webpayDebug
 @endsection

@@ -2,6 +2,7 @@
 
 namespace SextaNet\LaravelWebpay;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
@@ -30,6 +31,10 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
+        Blade::directive('webpayDebug', function ($request) {
+            return view('webpay::_debug')->render();
+        });
+
         Route::get('webpay/response', function () {
             $token = request('token_ws');
 

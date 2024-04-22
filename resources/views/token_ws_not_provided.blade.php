@@ -3,7 +3,9 @@
 @section('title', 'Token WS not provided')
 
 @section('content')
-    <div>Token WS not provided. Please try again</div>
+    <div>
+        Token WS not provided. Please try again
+    </div>
 
     <div class="options">
         <a class="button" href="{{ route('webpay.create') }}">
@@ -11,7 +13,5 @@
         </a>
     </div>
 
-    <code>
-        {{ var_dump(request()->all()) }}
-    </code>
+    @webpayDebug
 @endsection

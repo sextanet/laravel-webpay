@@ -56,6 +56,7 @@
             padding: 10px 30px;
             border-radius: 10px;
             transition: filter 200ms;
+            font-weight: 600;
         }
 
         .button:hover {
@@ -66,9 +67,11 @@
             background: #000;
             color: #fff;
             padding: 30px;
-            width: 60%;
+            width: 80%;
             border-radius: 10px;
             overflow: scroll;
+            font-family: "Courier New", monospace;
+            font-size: .8rem;
         }
     </style>
 </head>
