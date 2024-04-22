@@ -5,7 +5,6 @@ namespace SextaNet\LaravelWebpay;
 use Illuminate\View\View;
 use SextaNet\LaravelWebpay\Exceptions\RejectedTransaction;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
-use SextaNet\LaravelWebpay\Models\WebpayResponse;
 use stdClass;
 use Transbank\Webpay\WebpayPlus\Responses\TransactionCommitResponse;
 use Transbank\Webpay\WebpayPlus\Transaction;
