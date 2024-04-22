@@ -36,6 +36,22 @@ describe('find by buyOrder', function () {
     })->expectException(\Exception::class);
 });
 
+it('knows what are old', function () {
+    $actual = WebpayOrder::factory()->create([
+        'created_at' => now(),
+    ]);
+
+    $more_than_48_hours = WebpayOrder::factory()->create([
+        'created_at' => now()->subHours(50),
+    ]);
+
+    expect(WebpayOrder::old()->count())
+        ->toBe(1);
+
+    expect(WebpayOrder::old()->first()->id)
+        ->toBe($more_than_48_hours->id);
+});
+
 it('has many responses', function () {
     $order = WebpayOrder::factory()->create();
 

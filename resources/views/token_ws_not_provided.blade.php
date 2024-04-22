@@ -6,7 +6,7 @@
     <div>Token WS not provided. Please try again</div>
 
     <div class="options">
-        <a href="{{ route('webpay.create') }}">
+        <a class="button" href="{{ route('webpay.create') }}">
             Retry
         </a>
     </div>

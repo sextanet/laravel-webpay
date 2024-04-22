@@ -15,6 +15,7 @@ return new class extends Migration
             $table->float('amount');
             $table->string('token')->nullable();
             $table->string('url')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

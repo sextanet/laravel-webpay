@@ -26,6 +26,7 @@ return new class extends Migration
             $table->json('card_detail');
             $table->string('transaction_date');
             $table->string('balance')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

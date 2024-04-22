@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     <style>
+        :root {
+            --primary: #d5006c;
+        }
+
         * {
             margin: 0;
             font-family: "Arial", sans-serif;
@@ -32,13 +36,29 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            gap: 20px;
         }
 
         .options {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .button {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 10px;
+            transition: filter 200ms;
+        }
+
+        .button:hover {
+            filter: brightness(0.9);
         }
     </style>
 </head>
