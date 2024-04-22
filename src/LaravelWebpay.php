@@ -47,10 +47,10 @@ class LaravelWebpay
             route('webpay.response'),
         );
 
-        $stored_order->addTokenWithUrl(
-            $response->getToken(),
-            $response->getUrl(),
-        );
+        $token = $response->getToken();
+        $url = $response->getUrl();
+
+        $stored_order->addTokenWithUrl($token, $url);
 
         return view('webpay::create', compact('response'));
     }
