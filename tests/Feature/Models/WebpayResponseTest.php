@@ -3,13 +3,13 @@
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use SextaNet\LaravelWebpay\Models\WebpayResponse;
 
-it('has many responses', function () {
+it('belongs to a response', function () {
     $order = WebpayOrder::factory()->create();
 
     $response = WebpayResponse::factory()->create([
         'order_id' => $order->id,
     ]);
 
-    expect($order->responses->first())
-        ->toBeInstanceOf(WebpayResponse::class);
+    expect($response->order)
+        ->toBeInstanceOf(WebpayOrder::class);
 })->only();
