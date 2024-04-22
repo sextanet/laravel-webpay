@@ -44,7 +44,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
 
         Route::get('webpay/retry/session/{session_id}', function (string $session_id) {
             $order = WebpayOrder::where('session_id', $session_id)->firstOrFail();
-            
+
             dd('Retry order', $order);
         })->name('webpay.session.retry');
     }
