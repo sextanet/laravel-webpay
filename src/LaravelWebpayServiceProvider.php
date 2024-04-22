@@ -4,6 +4,7 @@ namespace SextaNet\LaravelWebpay;
 
 use Illuminate\Support\Facades\Route;
 use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
+use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -36,13 +37,15 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
         })->name('webpay.response');
 
         Route::any('webpay/response', function () {
-            $buy_order = request('TBK_ORDEN_COMPRA') ?? null;
+            $session = request('TBK_ID_SESION') ?? null;
 
-            return view('webpay::retry', compact('buy_order'));
+            return view('webpay::retry', compact('session'));
         })->name('webpay.response.retry');
 
-        Route::get('webpay/retry/{token}', function (string $token) {
-            return 'Retry order';
-        })->name('webpay.retry');
+        Route::get('webpay/retry/session/{session_id}', function (string $session_id) {
+            $order = WebpayOrder::where('session_id', $session_id)->firstOrFail();
+            
+            dd('Retry order', $order);
+        })->name('webpay.session.retry');
     }
 }

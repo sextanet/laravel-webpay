@@ -6,8 +6,8 @@
     <div>{{ config('webpay.texts.retry.content') }}</div>
 
     <div class="options">
-        @if ($buy_order)
-            <a href="{{ route('webpay.retry', [$buy_order]) }}">
+        @if ($session)
+            <a href="{{ route('webpay.session.retry', [$session]) }}">
                 Retry
             </a>
         @endif
