@@ -1,11 +1,9 @@
-@extends('webpay::_layout')
+@extends('webpay::partials.layout')
 
-@section('title', 'Token WS not provided')
+@section('title', 'Rejected')
 
 @section('content')
-    <div>
-        Token WS not provided. Please try again
-    </div>
+    <div>Your transaction was rejected</div>
 
     <div class="options">
         <a class="button" href="{{ route('webpay.create') }}" once>

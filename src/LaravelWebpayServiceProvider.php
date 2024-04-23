@@ -31,7 +31,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
 
     public function registerBlade()
     {
-        Blade::component('webpay::_debug', 'debug');
+        Blade::component('webpay::partials.debug', 'debug');
     }
 
     public function packageRegistered()

@@ -39,7 +39,7 @@ class LaravelWebpay extends BaseWebpay
 
         $order->addTokenWithUrl($token, $url);
 
-        return view('webpay::redirect', compact('order'));
+        return view('webpay::helpers.redirect', compact('order'));
     }
 
     public static function createManually(string $buy_order, string $session_id, string $amount): View
@@ -81,6 +81,6 @@ class LaravelWebpay extends BaseWebpay
         $token = request('TBK_TOKEN');
         $order = WebpayOrder::whereToken($token)->firstOrFail();
 
-        return view('webpay::token_ws_not_provided', compact('order'));
+        return view('webpay::responses.token_ws_not_provided', compact('order'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('webpay::_layout')
+@extends('webpay::partials.layout')
 
 @section('title', config('webpay.texts.creating.title'))
 
