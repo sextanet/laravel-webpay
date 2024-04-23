@@ -13,5 +13,15 @@
         </a>
     </div>
 
+    <script>
+        const button = document.querySelector('.button');
+
+        button.addEventListener('click', function () {
+            button.innerHTML = 'Wait...';
+            button.style.cursor = 'disabled';
+            button.style.pointerEvents = 'none';
+        });
+    </script>
+
     <x-debug/>
 @endsection

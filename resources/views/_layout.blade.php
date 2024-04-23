@@ -8,6 +8,7 @@
         :root {
             --primary: #d5006c;
             --primary-hover: #b0035b;
+            --border-radius: .5rem;
         }
 
         * {
@@ -50,11 +51,13 @@
             text-decoration: none;
         }
 
-        .button {
+        .button, button {
+            all: unset;
+            cursor: pointer;
             background: var(--primary);
             color: #fff;
-            padding: 10px 30px;
-            border-radius: 10px;
+            padding: .675rem 1.5rem;
+            border-radius: var(--border-radius);
             transition: filter 200ms;
             font-weight: 600;
         }
@@ -68,7 +71,7 @@
             color: #fff;
             padding: 30px;
             width: 80%;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             overflow: scroll;
             font-family: "Courier New", monospace;
             font-size: .8rem;
