@@ -1,9 +1,9 @@
 @extends('webpay::partials.layout')
 
-@section('title', 'Authorized')
+@section('title', 'Approved')
 
 @section('content')
-    <div>This is your authorized page</div>
+    <div>This is your approved page</div>
 
     <div>You need to change it by using</div>
 
@@ -11,5 +11,5 @@
         php artisan vendor:publish --tag=webpay-views
     </code>
 
-    <x-debug/>
+    <x-webpay-debug/>
 @endsection

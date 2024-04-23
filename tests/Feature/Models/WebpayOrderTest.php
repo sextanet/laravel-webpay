@@ -15,6 +15,27 @@ it('adds token with url', function () {
         ->toBe('https://');
 });
 
+describe('find by token', function () {
+    test('exists', function () {
+        $order = WebpayOrder::factory()->create([
+            'token' => 1234,
+        ]);
+
+        $found = WebpayOrder::findByToken(1234);
+
+        expect($found->count())
+            ->toBe(1);
+    });
+
+    test("doesn't exists", function () {
+        $order = WebpayOrder::factory()->create([
+            'token' => 1234,
+        ]);
+
+        WebpayOrder::findByToken(12346);
+    })->expectException(\Exception::class);
+});
+
 describe('find by buyOrder', function () {
     test('exists', function () {
         $order = WebpayOrder::factory()->create([

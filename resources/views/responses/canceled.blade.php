@@ -1,10 +1,10 @@
 @extends('webpay::partials.layout')
 
-@section('title', 'Token WS not provided')
+@section('title', 'Operation canceled')
 
 @section('content')
     <div>
-        Token WS not provided. Please try again
+        Response canceled. Please try again
     </div>
 
     <div class="options">
@@ -13,5 +13,5 @@
         </a>
     </div>
 
-    <x-debug/>
+    <x-webpay-debug/>
 @endsection

@@ -6,12 +6,12 @@
     <div>{{ config('webpay.texts.retry.content') }}</div>
 
     <div class="options">
-        @if ($session)
+        @isset ($session)
             <a href="{{ route('webpay.session.retry', [$session]) }}">
                 Retry
             </a>
-        @endif
+        @endisset
     </div>
 
-    <x-debug/>
+    <x-webpay-debug/>
 @endsection

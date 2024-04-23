@@ -11,5 +11,5 @@
         </a>
     </div>
 
-    <x-debug/>
+    <x-webpay-debug/>
 @endsection

@@ -31,7 +31,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
 
     public function registerBlade()
     {
-        Blade::component('webpay::partials.debug', 'debug');
+        Blade::component('webpay::partials.debug', 'webpay-debug');
     }
 
     public function packageRegistered()
@@ -45,7 +45,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
                 return LaravelWebpay::commit($token);
             }
 
-            return LaravelWebpay::responseTokenWsNotProvided();
+            return LaravelWebpay::responseCanceled();
         })->name('webpay.response');
 
         // Route::any('webpay/response', function () {

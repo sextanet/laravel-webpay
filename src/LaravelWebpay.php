@@ -42,18 +42,6 @@ class LaravelWebpay extends BaseWebpay
         return view('webpay::helpers.redirect', compact('order'));
     }
 
-    public static function createManually(string $buy_order, string $session_id, string $amount): View
-    {
-        $response = static::instance()->create(
-            $buy_order,
-            $session_id,
-            $amount,
-            route('webpay.response'),
-        );
-
-        return view('webpay::create', compact('response'));
-    }
-
     public static function commit(string $token)
     {
         $commit = static::instance()
@@ -62,25 +50,30 @@ class LaravelWebpay extends BaseWebpay
         $store = static::storeResponse($commit);
 
         if ($commit->isApproved()) {
-            return view('webpay::authorized', compact('store'));
+            return static::responseApproved();
         }
 
         return static::responseRejected();
     }
 
-    public static function responseRejected()
+    public static function responseApproved(): View
     {
-        $token = request('token_ws');
-        $order = WebpayOrder::whereToken($token)->firstOrFail();
-
-        return view('webpay::rejected', compact('order'));
+        return view('webpay::responses.approved', compact('store'));
     }
 
-    public static function responseTokenWsNotProvided()
+    public static function responseRejected(): View
+    {
+        $token = request('token_ws');
+        $order = WebpayOrder::findByToken($token);
+
+        return view('webpay::responses.rejected', compact('order'));
+    }
+
+    public static function responseCanceled(): View
     {
         $token = request('TBK_TOKEN');
-        $order = WebpayOrder::whereToken($token)->firstOrFail();
+        $order = WebpayOrder::findByToken($token);
 
-        return view('webpay::responses.token_ws_not_provided', compact('order'));
+        return view('webpay::responses.canceled', compact('order'));
     }
 }

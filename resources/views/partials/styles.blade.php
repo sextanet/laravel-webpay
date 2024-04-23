@@ -91,8 +91,12 @@
     }
 
     code.response::before {
-        content: '// Response for easy debug\A\A';
+        content: '// 💡 Response for easy debug\A\A';
         white-space: pre;
+        color: #666;
+        letter-spacing: .01rem;
+        font-weight: 600;
+        font-size: .850rem;
     }
 
     .sextanet {

@@ -15,6 +15,12 @@ class WebpayOrder extends Model
         ]);
     }
 
+    public function scopeFindByToken(Builder $builder, string $token): void
+    {
+        $builder->where('token', $token)
+            ->firstOrFail();
+    }
+
     public function scopeFindByBuyOrder(Builder $builder, string $buy_order): void
     {
         $builder->where('buy_order', $buy_order)
