@@ -24,13 +24,19 @@ class TestCase extends Orchestra
         ];
     }
 
+    public function migrate(...$files)
+    {
+        foreach ($files as $file) {
+            $migration = include __DIR__."/../database/migrations/{$file}";
+            $migration->up();
+        }
+    }
+
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-webpay_table.php.stub';
-        $migration->up();
-        */
+        $this->migrate('create_webpay_orders_table.php');
+        $this->migrate('create_webpay_responses_table.php');
     }
 }
