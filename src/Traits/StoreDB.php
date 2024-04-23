@@ -3,7 +3,7 @@
 namespace SextaNet\LaravelWebpay\Traits;
 
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
-use Transbank\Patpass\PatpassByWebpay\Responses\TransactionCommitResponse;
+use Transbank\Webpay\WebpayPlus\Responses\TransactionCommitResponse;
 
 trait StoreDB
 {
