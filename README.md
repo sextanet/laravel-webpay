@@ -35,14 +35,54 @@ WEBPAY_DEBUG=true
 
 ## Usage
 
+### With attached model (recommended)
+
+```php
+// app/Models/YourModel.php
+
+class YourModel
+{
+    use HasFactory;
+
+    use SextaNet\LaravelWebpay\Traits\WithWebpay; // 👈 1 Import trait
+}
+```
+
+By default, it uses these 3 fields which are required by Transbank:
+
+| Name       | Description                            | Example                          |
+|------------|----------------------------------------|----------------------------------|
+| amount     | Total price (integer format)           | 10000                            |
+| order_id   | Unique identifier for your transaction | 1                                |
+| session_id | Unique session for your transaction    | 23d6436f95b1987cd616b85bae806649 |
+
+If you use other names for your fields, no problem: you can make each model recognize them very easily using the following magic methods:
+
+```php
+// app/Models/YourModel.php
+
+public function getBuyOrderAttribute(): string
+{
+    return $this->id;
+}
+
+public function getAmountAttribute(): string
+{
+    return $this->price;
+}
+
+public function getSessionIdAttribute(): string
+{
+    return md5($this->id);
+}
+```
+
 ```php
 // In your controller or equivalent
 
 $order = YourOrder::where('id', 1)->first();
 
-// Your order model needs to have: buy_order, session_id and amount fields
-
-return LaravelWebpay::create($order);
+return $order->withWebpay(); // 👈 3) Done!
 ```
 
 > Easy peasy!

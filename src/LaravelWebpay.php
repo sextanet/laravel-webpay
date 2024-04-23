@@ -2,9 +2,9 @@
 
 namespace SextaNet\LaravelWebpay;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\View;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
-use stdClass;
 use Transbank\Webpay\WebpayPlus\Transaction;
 
 class LaravelWebpay extends BaseWebpay
@@ -23,7 +23,7 @@ class LaravelWebpay extends BaseWebpay
         );
     }
 
-    public static function create(stdClass $orderClass): View
+    public static function create(Model $orderClass): View
     {
         $order = static::storeOrder($orderClass);
 
