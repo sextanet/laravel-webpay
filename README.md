@@ -22,7 +22,7 @@ php artisan vendor:publish --tag="laravel-webpay-migrations"
 php artisan migrate
 ```
 
-Set your keys
+Copy these keys in your `.env` file
 
 ```dotenv
 WEBPAY_IN_PRODUCTION=false
