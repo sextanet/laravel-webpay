@@ -1,5 +1,5 @@
 @if(config('webpay.debug'))
-    <code>
+    <code class="response">
         {{ var_dump(request()->all()) }}
     </code>
 @endif

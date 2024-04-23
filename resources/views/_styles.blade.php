@@ -83,11 +83,23 @@
         overflow: scroll;
         font-family: "Courier New", monospace;
         font-size: .8rem;
+        position: relative;
+    }
+
+    code.response {
+        margin-bottom: 10px;
+    }
+
+    code.response::before {
+        content: '// Response for easy debug\A\A';
+        white-space: pre;
     }
 
     .sextanet {
         color: #fff;
         margin: 0 5px;
         font-weight: 600;
+        font-family: "Courier New", monospace;
+        letter-spacing: .01rem;
     }
 </style>
