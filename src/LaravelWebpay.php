@@ -3,7 +3,6 @@
 namespace SextaNet\LaravelWebpay;
 
 use Illuminate\View\View;
-use SextaNet\LaravelWebpay\Exceptions\RejectedTransaction;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use stdClass;
 use Transbank\Webpay\WebpayPlus\Transaction;
@@ -66,13 +65,21 @@ class LaravelWebpay extends BaseWebpay
             return view('webpay::authorized', compact('store'));
         }
 
-        throw new RejectedTransaction();
+        return static::responseRejected();
+    }
+
+    public static function responseRejected()
+    {
+        $token = request('token_ws');
+        $order = WebpayOrder::whereToken($token)->firstOrFail();
+
+        return view('webpay::rejected', compact('order'));
     }
 
     public static function responseTokenWsNotProvided()
     {
-        $tbk_token = request('TBK_TOKEN');
-        $order = WebpayOrder::whereToken($tbk_token)->firstOrFail();
+        $token = request('TBK_TOKEN');
+        $order = WebpayOrder::whereToken($token)->firstOrFail();
 
         return view('webpay::token_ws_not_provided', compact('order'));
     }
