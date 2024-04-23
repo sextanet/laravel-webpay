@@ -5,15 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/sextanet/laravel-webpay/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/sextanet/laravel-webpay/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/sextanet/laravel-webpay.svg?style=flat-square)](https://packagist.org/packages/sextanet/laravel-webpay)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-webpay.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-webpay)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+The easiest way to use Webpay in your projects 
 
 ## Installation
 
@@ -23,61 +15,37 @@ You can install the package via composer:
 composer require sextanet/laravel-webpay
 ```
 
-You can publish and run the migrations with:
+Publish and run migrations
 
 ```bash
 php artisan vendor:publish --tag="laravel-webpay-migrations"
 php artisan migrate
 ```
 
-You can publish the config file with:
+Set your keys
 
-```bash
-php artisan vendor:publish --tag="laravel-webpay-config"
+```dotenv
+WEBPAY_IN_PRODUCTION=false
+WEBPAY_COMMERCE_CODE=
+WEBPAY_SECRET_KEY=
+WEBPAY_DEBUG=true
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-webpay-views"
-```
+> Important: When you are ready to be in production, you need to set `WEBPAY_IN_PRODUCTION` to `true`, and specify `WEBPAY_COMMERCE_CODE` and `WEBPAY_SECRET_KEY`.
 
 ## Usage
 
 ```php
-$laravelWebpay = new SextaNet\LaravelWebpay();
-echo $laravelWebpay->echoPhrase('Hello, SextaNet!');
+// In your controller or equivalent
+
+$order = YourOrder::where('id', 1)->first();
+
+// Your order model needs to have: buy_order, session_id and amount fields
+
+return LaravelWebpay::create($order);
 ```
 
-## Testing
-
-```bash
-composer test
-```
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [SextaNet](https://github.com/SextaNet)
-- [All Contributors](../../contributors)
+> Easy peasy!
 
 ## License
 
