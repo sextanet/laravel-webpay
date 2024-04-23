@@ -29,10 +29,15 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
             ->hasCommand(LaravelWebpayCommand::class);
     }
 
-    public function packageRegistered()
+    public function registerBlade()
     {
         Blade::component('webpay::_debug', 'debug');
-        
+    }
+
+    public function packageRegistered()
+    {
+        $this->registerBlade();
+
         Route::get('webpay/response', function () {
             $token = request('token_ws');
 
