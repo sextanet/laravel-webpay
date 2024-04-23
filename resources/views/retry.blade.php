@@ -13,5 +13,5 @@
         @endif
     </div>
 
-    @include('webpay::_debug')
+    <x-debug/>
 @endsection
