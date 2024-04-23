@@ -8,20 +8,10 @@
     </div>
 
     <div class="options">
-        <a class="button" href="{{ route('webpay.create') }}">
+        <a class="button" href="{{ route('webpay.create') }}" once>
             Retry
         </a>
     </div>
-
-    <script>
-        const button = document.querySelector('.button');
-
-        button.addEventListener('click', function () {
-            button.innerHTML = 'Wait...';
-            button.style.cursor = 'disabled';
-            button.style.pointerEvents = 'none';
-        });
-    </script>
 
     <x-debug/>
 @endsection

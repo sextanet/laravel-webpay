@@ -87,7 +87,15 @@
     </main>
 
     <script>
-        {{-- document.querySelector('form').submit(); --}}
+        const buttonsOnce = document.querySelectorAll('.button[once]');
+
+        buttonsOnce.forEach(button => {
+            button.addEventListener('click', function () {
+                button.innerHTML = 'Wait...';
+                button.style.cursor = 'disabled';
+                button.style.pointerEvents = 'none';
+            });
+        });
     </script>
 </body>
 </html>
