@@ -60,15 +60,11 @@ class LaravelWebpay extends BaseWebpay
         $commit = static::instance()
             ->commit($token);
 
-        // dd($commit);
-
         $store = static::storeResponse($commit);
 
-        dd($store);
-
-        // if ($commit->isApproved()) {
-        //     dd($commit);
-        // }
+        if ($commit->isApproved()) {
+            return view('webpay::authorized', compact('store'));
+        }
 
         throw new RejectedTransaction();
     }
