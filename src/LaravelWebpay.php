@@ -17,10 +17,19 @@ class LaravelWebpay extends BaseWebpay
             return $instance;
         }
 
+        static::checkConfig();
+
         return $instance->configureForProduction(
             config('webpay.commerce_code'),
             config('webpay.secret_key')
         );
+    }
+
+    public static function checkConfig(): void
+    {
+        if (! config('webpay.commerce_code') || ! config('webpay.secret')) {
+            throw new \Exception('Commerce code and secret key are required when you are in production mode');
+        }
     }
 
     public static function create(Model $orderClass): View
