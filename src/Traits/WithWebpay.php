@@ -6,7 +6,7 @@ use SextaNet\LaravelWebpay\Exceptions\MissingAmount;
 use SextaNet\LaravelWebpay\Exceptions\MissingBuyOrder;
 use SextaNet\LaravelWebpay\Facades\LaravelWebpay;
 
-trait WithWebpay
+trait PayWithWebpay
 {
     public function getBuyOrderAttribute(): string
     {
@@ -23,7 +23,7 @@ trait WithWebpay
         return md5($this->getBuyOrderAttribute());
     }
 
-    public function withWebpay()
+    public function payWithWebpay()
     {
         return LaravelWebpay::create($this);
     }

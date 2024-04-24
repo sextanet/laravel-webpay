@@ -44,7 +44,7 @@ class YourModel
 {
     use HasFactory;
 
-    use SextaNet\LaravelWebpay\Traits\WithWebpay; // 👈 1 Import trait
+    use \SextaNet\LaravelWebpay\Traits\PayWithWebpay; // 👈 1 Import trait
 }
 ```
 
@@ -82,10 +82,10 @@ public function getSessionIdAttribute(): string
 
 $order = YourOrder::where('id', 1)->first();
 
-return $order->withWebpay(); // 👈 3) Done!
+return $order->payWithWebpay(); // 👈 2) Done!
 ```
 
-> Easy peasy!
+Easy peasy!
 
 ## License
 
