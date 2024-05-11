@@ -31,29 +31,6 @@ WEBPAY_SECRET_KEY=
 WEBPAY_DEBUG=true
 ```
 
-### Dev mode
-
-By default, it works in dev mode. You can use Test Cards
-
-Testing cards
-
-|Type        |Numbers         |Result  |
-|------------|----------------|--------|
-|VISA        |4051885600446623|Approved|
-|Mastercard  |5186059559590568|Rejected|
-|Redcompra   |4051884239937763|Approved|
-|VISA Prepaid|4051886000056590|Approved|
-
-Expire date: (Any valid date)
-RUT: 11111111-1
-Password: 123
-
-Source: [Official Transbank Developers website](https://www.transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba)
-
-### Production mode
-
-When you are ready to be in production, you need to set `WEBPAY_IN_PRODUCTION` to `true`, and specify `WEBPAY_COMMERCE_CODE` and `WEBPAY_SECRET_KEY`.
-
 ## Usage
 
 ### With attached model (recommended)
@@ -107,6 +84,25 @@ return $order->payWithWebpay(); // 👈 2) Done!
 ```
 
 Easy peasy!
+
+### Testing cards
+
+|Type        |Numbers         |Result  |
+|------------|----------------|--------|
+|VISA        |4051885600446623|Approved|
+|Mastercard  |5186059559590568|Rejected|
+|Redcompra   |4051884239937763|Approved|
+|VISA Prepaid|4051886000056590|Approved|
+
+- Expire date: (Any valid date)
+- RUT: 11111111-1
+- Password: 123
+
+Source: [Official Transbank Developers website](https://www.transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba)
+
+### Production mode
+
+When you are ready to be in production, you need to set `WEBPAY_IN_PRODUCTION` to `true`, and specify `WEBPAY_COMMERCE_CODE` and `WEBPAY_SECRET_KEY`.
 
 ## License
 
