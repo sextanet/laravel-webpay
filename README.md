@@ -61,17 +61,17 @@ If you use other names for your fields, no problem: you can make each model reco
 
 public function getBuyOrderAttribute(): string
 {
-    return $this->id;
+    return $this->id; // Cive it your custom logic
 }
 
 public function getAmountAttribute(): string
 {
-    return $this->price;
+    return $this->price; // Cive it your custom logic: Don't need to use decimals
 }
 
 public function getSessionIdAttribute(): string
 {
-    return md5($this->id);
+    return md5($this->id); // Cive it your custom logic
 }
 ```
 
