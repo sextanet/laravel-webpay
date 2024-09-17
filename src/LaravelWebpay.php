@@ -67,7 +67,7 @@ class LaravelWebpay extends BaseWebpay
 
     public static function responseApproved(): View
     {
-        return view('webpay::responses.approved', compact('store'));
+        return view('webpay::responses.approved');
     }
 
     public static function responseRejected(): View
