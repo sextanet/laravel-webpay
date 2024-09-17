@@ -32,15 +32,14 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
         Blade::component('webpay::partials.debug', 'webpay-debug');
     }
 
-    protected function registerRoutes(string $file)
+    protected function registerRoutes(string $file): void
     {
-        require __DIR__."/routes/{$file}";
+        $this->loadRoutesFrom(__DIR__."/routes/{$file}");
     }
 
     public function packageRegistered()
     {
         $this->registerBladeComponents();
-
         $this->registerRoutes('web.php');
     }
 }
