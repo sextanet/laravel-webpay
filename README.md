@@ -22,7 +22,7 @@ composer require sextanet/laravel-webpay
 Publish and run migrations
 
 ```bash
-php artisan vendor:publish --tag="laravel-webpay-migrations"
+php artisan vendor:publish --tag="webpay-migrations"
 php artisan migrate
 ```
 
