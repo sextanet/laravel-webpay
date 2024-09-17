@@ -99,6 +99,13 @@
         font-size: .850rem;
     }
 
+    .approved {
+        background: #d4edda;
+        color: #155724;
+        padding: 0 2px;
+        font-weight: 600;
+    }
+
     .sextanet {
         color: #fff;
         margin: 0 5px;

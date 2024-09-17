@@ -2,7 +2,6 @@
 
 use SextaNet\LaravelWebpay\Exceptions\MissingAmount;
 use SextaNet\LaravelWebpay\Exceptions\MissingBuyOrder;
-use SextaNet\LaravelWebpay\Exceptions\MissingMarkAsPaidWithWebpay;
 use SextaNet\LaravelWebpay\Traits\PayWithWebpay;
 
 beforeEach(function () {
@@ -17,7 +16,7 @@ describe('needs to implement getBuyOrderAttribute()', function () {
     })->expectException(MissingBuyOrder::class);
 
     test('implemented', function () {
-        $stub = new class {
+        $stub = new Class {
             use PayWithWebpay;
     
             public function getBuyOrderAttribute(): string
@@ -37,7 +36,7 @@ describe('needs to implement getAmountAttribute()', function () {
     })->expectException(MissingAmount::class);
 
     test('implemented', function () {
-        $stub = new class {
+        $stub = new Class {
             use PayWithWebpay;
     
             public function getAmountAttribute(): string
@@ -52,12 +51,15 @@ describe('needs to implement getAmountAttribute()', function () {
 });
 
 describe('needs to implement markAsPaidWithWebpay()', function () {
-    test('not implemented', function () {
-        $this->stubModelWithTrait->markAsPaidWithWebpay();
-    })->expectException(MissingMarkAsPaidWithWebpay::class);
+    test('not implemented (returns a the default view)', function () {
+        expectViewIs(
+            $this->stubModelWithTrait->markAsPaidWithWebpay(),
+            view('webpay::responses.approved')
+        );
+    });
 
     test('implemented', function () {
-        $stub = new class {
+        $stub = new Class {
             use PayWithWebpay;
     
             public function markAsPaidWithWebpay()
@@ -80,7 +82,7 @@ describe('needs to implement getBuyOrderAttribute to get getSessionIdAttribute()
     })->expectException(MissingBuyOrder::class);
 
     test('implemented', function () {
-        $stub = new class {
+        $stub = new Class {
             use PayWithWebpay;
     
             public function getSessionIdAttribute(): string
