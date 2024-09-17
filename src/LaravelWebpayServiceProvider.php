@@ -59,5 +59,9 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
 
             dd('Retry order', $order);
         })->name('webpay.session.retry');
+
+        Route::get('webpay/create', function () {
+            dd('Orden cancelada. ¿Quieres crear la orden otra vez?');
+        })->name('webpay.create');
     }
 }
