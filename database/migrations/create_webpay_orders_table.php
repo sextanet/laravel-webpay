@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('webpay_orders', function (Blueprint $table) {
             $table->id();
+            $table->morphs('orderable');
             $table->string('buy_order')->unique();
             $table->string('session_id');
             $table->float('amount');

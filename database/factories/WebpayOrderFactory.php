@@ -12,6 +12,8 @@ class WebpayOrderFactory extends Factory
     public function definition()
     {
         return [
+            'orderable_type' => 'App\Models\Order',
+            'orderable_id' => fake()->unique()->randomNumber(8),
             'buy_order' => (string) fake()->unique()->randomNumber(8),
             'session_id' => md5((string) fake()->unique()->randomNumber(8)),
             'amount' => fake()->randomFloat(2, 1000, 10000),
