@@ -70,3 +70,26 @@ describe('needs to implement markAsPaidWithWebpay()', function () {
             ->not->toBeNull();
     });
 });
+
+describe('needs to implement getBuyOrderAttribute to get getSessionIdAttribute()', function () {
+    test('not implemented', function () {
+        $this->stubModelWithTrait->getSessionIdAttribute();
+
+        expect($this->stubModelWithTrait->getSessionIdAttribute())
+            ->toBeNull();
+    })->expectException(MissingBuyOrder::class);
+
+    test('implemented', function () {
+        $stub = new class {
+            use PayWithWebpay;
+    
+            public function getSessionIdAttribute(): string
+            {
+                return 1000;
+            }
+        };
+
+        expect($stub->getSessionIdAttribute())
+            ->not->toBeNull();
+    });
+});
