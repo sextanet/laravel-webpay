@@ -11,7 +11,7 @@ class LaravelWebpay extends BaseWebpay
 {
     public static function instance(): Transaction
     {
-        $instance = new Transaction();
+        $instance = new Transaction;
 
         if (! config('webpay.in_production')) {
             return $instance;

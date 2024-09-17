@@ -10,12 +10,12 @@ trait PayWithWebpay
 {
     public function getBuyOrderAttribute(): string
     {
-        return $this->id ?? throw new MissingBuyOrder();
+        return $this->id ?? throw new MissingBuyOrder;
     }
 
     public function getAmountAttribute(): string
     {
-        return $this->amount ?? throw new MissingAmount();
+        return $this->amount ?? throw new MissingAmount;
     }
 
     public function getSessionIdAttribute(): string
