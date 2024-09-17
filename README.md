@@ -2,6 +2,8 @@
 
 ![Laravel Webpay](https://sextanet.sfo2.cdn.digitaloceanspaces.com/packages/laravel-webpay/logo.webp?v2)
 
+Laravel, Transbank, Webpay and SextaNet products and logos are property of their respective companies.
+
 The easiest way to use Webpay in your projects 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sextanet/laravel-webpay.svg?style=flat-square)](https://packagist.org/packages/sextanet/laravel-webpay)
@@ -40,13 +42,13 @@ WEBPAY_DEBUG=true
 ```php
 // app/Models/YourModel.php
 
-use SextaNet\LaravelWebpay\Traits\PayWithWebpay; // 👈 1. Import it
+use SextaNet\LaravelWebpay\Traits\PayWithWebpay; // 👈 Import it
 
 class YourModel
 {
     // ...
     use HasFactory;
-    use PayWithWebpay; // 👈 2. Use it!
+    use PayWithWebpay; // 👈 Use it!
 }
 ```
 
@@ -84,7 +86,7 @@ public function getSessionIdAttribute(): string
 
 $order = YourOrder::where('id', 1)->first();
 
-return $order->payWithWebpay(); // 👈 3. Done!
+return $order->payWithWebpay(); // 👈 Done!
 ```
 
 Easy peasy!
