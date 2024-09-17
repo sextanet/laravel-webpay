@@ -14,6 +14,10 @@ public function markAsPaidWithWebpay()
 {
     // 😎 Your custom logic here
 
+    // You can access to:
+    $order = $this->webpay_order;
+    $responses = $this->webpay_responses;
+
     return view('custom_view');
 }
 </pre>
