@@ -1,6 +1,6 @@
 # Laravel Webpay
 
-![Laravel Webpay](https://sextanet.sfo2.cdn.digitaloceanspaces.com/packages/laravel-webpay/logo.webp)
+![Laravel Webpay](https://sextanet.sfo2.cdn.digitaloceanspaces.com/packages/laravel-webpay/logo.webp?v2)
 
 The easiest way to use Webpay in your projects 
 
