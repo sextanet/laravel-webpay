@@ -47,7 +47,9 @@ use SextaNet\LaravelWebpay\Traits\PayWithWebpay; // 👈 Import it
 class YourModel
 {
     // ...
+
     use HasFactory;
+    
     use PayWithWebpay; // 👈 Use it!
 }
 ```
