@@ -74,7 +74,7 @@
         background: var(--primary-hover);
     }
 
-    code {
+    code, pre {
         background: #000;
         color: #fff;
         padding: 30px;

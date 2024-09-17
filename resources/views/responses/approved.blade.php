@@ -3,13 +3,18 @@
 @section('title', 'Approved')
 
 @section('content')
-    <div>This is your approved page</div>
+<div>This is your approved page</div>
 
-    <div>You need to change it by using</div>
+<div>You need to implement your custom logic by doing</div>
 
-    <code>
-        php artisan vendor:publish --tag=webpay-views
-    </code>
+<pre>
+// YouModel.php
 
-    <x-webpay-debug/>
+public function markAsPaidWithWebpay()
+{
+    // Your custom logic
+}
+</pre>
+
+<x-webpay-debug/>
 @endsection

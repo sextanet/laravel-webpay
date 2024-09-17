@@ -4,9 +4,15 @@ namespace SextaNet\LaravelWebpay\Models;
 
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class WebpayOrder extends Model
 {
+    public function orderable(): MorphTo
+    {
+        return $this->morphTo(); // TODO: Without test
+    }
+
     public function addTokenWithUrl(string $token, string $url)
     {
         return $this->update([

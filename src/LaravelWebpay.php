@@ -59,15 +59,15 @@ class LaravelWebpay extends BaseWebpay
         $store = static::storeResponse($commit);
 
         if ($commit->isApproved()) {
-            return static::responseApproved();
+            return static::responseApproved($store);
         }
 
         return static::responseRejected();
     }
 
-    public static function responseApproved(): View
+    public static function responseApproved($store)
     {
-        return view('webpay::responses.approved');
+        return $store->order->orderable->markAsPaidWithWebpay();
     }
 
     public static function responseRejected(): View
