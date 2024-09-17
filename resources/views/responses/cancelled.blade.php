@@ -4,7 +4,7 @@
 
 @section('content')
     <div>
-        Response cancelled. Please try again
+        Operation cancelled. Please try again
     </div>
 
     <div class="options">
