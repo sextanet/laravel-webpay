@@ -26,8 +26,7 @@ trait PayWithWebpay
 
     public function markAsPaidWithWebpay()
     {
-        return view('webpay::responses.approved'); // TODO: Implement this
-        // return throw new MissingMarkAsPaidWithWebpay;
+        return view('webpay::responses.approved');
     }
 
     public function payWithWebpay()
