@@ -3,6 +3,7 @@
 namespace SextaNet\LaravelWebpay\Traits;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use SextaNet\LaravelWebpay\Exceptions\MissingAmount;
 use SextaNet\LaravelWebpay\Exceptions\MissingBuyOrder;
 use SextaNet\LaravelWebpay\Exceptions\MissingMarkAsPaidWithWebpay;
@@ -29,7 +30,11 @@ trait PayWithWebpay
 
     public function markAsPaidWithWebpay()
     {
-        return view('webpay::responses.approved');
+        $responses = $this->webpay_responses;
+        $latest_response = $this->latest_webpay_response;
+        $order = $this->webpay_order;
+
+        return view('webpay::responses.approved', compact('responses', 'latest_response', 'order'));
     }
 
     public function payWithWebpay()
@@ -45,5 +50,10 @@ trait PayWithWebpay
     public function webpay_responses(): HasMany
     {
         return $this->hasMany(WebpayResponse::class, 'order_id');
+    }
+
+    public function latest_webpay_response(): HasOne
+    {
+        return $this->hasOne(WebpayResponse::class, 'order_id')->latestOfMany();
     }
 }

@@ -26,6 +26,6 @@ Route::get('webpay/retry/session/{session_id}', function (string $session_id) {
     dd('Retry order', $order);
 })->name('webpay.session.retry');
 
-Route::get('webpay/create', function () {
+Route::get('webpay/cancelled', function () {
     dd('Orden cancelada. ¿Quieres crear la orden otra vez?');
-})->name('webpay.create');
+})->name('webpay.cancelled');
