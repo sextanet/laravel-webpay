@@ -4,7 +4,9 @@
 
 Laravel, Transbank, Webpay and SextaNet products and logos are property of their respective companies.
 
-The easiest way to use Webpay in your projects 
+The easiest way to use Webpay in your projects
+
+>! This package is under development. It can be unstable until official release (v2)
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sextanet/laravel-webpay.svg?style=flat-square)](https://packagist.org/packages/sextanet/laravel-webpay)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/sextanet/laravel-webpay/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/sextanet/laravel-webpay/actions?query=workflow%3Arun-tests+branch%3Amain)

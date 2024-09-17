@@ -29,15 +29,13 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
             ->hasCommand(LaravelWebpayCommand::class);
     }
 
-    public function registerBlade()
+    public function registerBladeComponents()
     {
         Blade::component('webpay::partials.debug', 'webpay-debug');
     }
 
-    public function packageRegistered()
+    public function registerRoutes()
     {
-        $this->registerBlade();
-
         Route::get('webpay/response', function () {
             $token = request('token_ws');
 
@@ -63,5 +61,12 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
         Route::get('webpay/create', function () {
             dd('Orden cancelada. ¿Quieres crear la orden otra vez?');
         })->name('webpay.create');
+    }
+
+    public function packageRegistered()
+    {
+        $this->registerBladeComponents();
+
+        $this->registerRoutes();
     }
 }
