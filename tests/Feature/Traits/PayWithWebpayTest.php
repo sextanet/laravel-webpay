@@ -52,10 +52,8 @@ describe('needs to implement getAmountAttribute()', function () {
 
 describe('needs to implement markAsPaidWithWebpay()', function () {
     test('not implemented (returns a the default view)', function () {
-        expectViewIs(
-            $this->stubModelWithTrait->markAsPaidWithWebpay(),
-            view('webpay::responses.approved')
-        );
+        expect($this->stubModelWithTrait->markAsPaidWithWebpay())
+            ->toBeView('webpay::responses.approved');
     });
 
     test('implemented', function () {
