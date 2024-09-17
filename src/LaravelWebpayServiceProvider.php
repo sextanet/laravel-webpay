@@ -45,7 +45,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
                 return LaravelWebpay::commit($token);
             }
 
-            return LaravelWebpay::responseCanceled();
+            return LaravelWebpay::responseCancelled();
         })->name('webpay.response');
 
         // Route::any('webpay/response', function () {

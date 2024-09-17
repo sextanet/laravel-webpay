@@ -1,10 +1,10 @@
 @extends('webpay::partials.layout')
 
-@section('title', 'Operation canceled')
+@section('title', 'Operation cancelled')
 
 @section('content')
     <div>
-        Response canceled. Please try again
+        Response cancelled. Please try again
     </div>
 
     <div class="options">
