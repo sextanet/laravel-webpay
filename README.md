@@ -40,11 +40,13 @@ WEBPAY_DEBUG=true
 ```php
 // app/Models/YourModel.php
 
+use SextaNet\LaravelWebpay\Traits\PayWithWebpay; // 👈 1. Import it
+
 class YourModel
 {
+    // ...
     use HasFactory;
-
-    use \SextaNet\LaravelWebpay\Traits\PayWithWebpay; // 👈 1 Import trait
+    use PayWithWebpay; // 👈 2. Use it!
 }
 ```
 
@@ -82,19 +84,19 @@ public function getSessionIdAttribute(): string
 
 $order = YourOrder::where('id', 1)->first();
 
-return $order->payWithWebpay(); // 👈 2) Done!
+return $order->payWithWebpay(); // 👈 3. Done!
 ```
 
 Easy peasy!
 
-### Testing cards
+## Testing cards
 
-|Type        |Numbers         |Result  |
-|------------|----------------|--------|
-|VISA        |4051885600446623|Approved|
-|Mastercard  |5186059559590568|Rejected|
-|Redcompra   |4051884239937763|Approved|
-|VISA Prepaid|4051886000056590|Approved|
+|Type        |Numbers            |Result  |
+|------------|-------------------|--------|
+|VISA        |4051 8856 0044 6623|Approved|
+|Mastercard  |5186 0595 5959 0568|Rejected|
+|Redcompra   |4051 8842 3993 7763|Approved|
+|VISA Prepaid|4051 8860 0005 6590|Approved|
 
 - Expire date: (Any valid date)
 - RUT: 11111111-1
@@ -102,7 +104,7 @@ Easy peasy!
 
 Source: [Official Transbank Developers website](https://www.transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba)
 
-### Production mode
+## Production mode
 
 When you are ready to be in production, you need to set `WEBPAY_IN_PRODUCTION` to `true`, and specify `WEBPAY_COMMERCE_CODE` and `WEBPAY_SECRET_KEY`.
 
