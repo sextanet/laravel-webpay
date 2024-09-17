@@ -30,11 +30,11 @@ trait PayWithWebpay
 
     public function markAsPaidWithWebpay()
     {
-        $responses = $this->webpay_responses;
         $latest_response = $this->latest_webpay_response;
+        $responses = $this->webpay_responses;
         $order = $this->webpay_order;
 
-        return view('webpay::responses.approved', compact('responses', 'latest_response', 'order'));
+        return view('webpay::responses.approved', compact('latest_response', 'responses', 'order'));
     }
 
     public function payWithWebpay()

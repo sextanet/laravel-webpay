@@ -2,6 +2,8 @@
 
 use SextaNet\LaravelWebpay\Exceptions\MissingAmount;
 use SextaNet\LaravelWebpay\Exceptions\MissingBuyOrder;
+use SextaNet\LaravelWebpay\Models\WebpayOrder;
+use SextaNet\LaravelWebpay\Models\WebpayResponse;
 use SextaNet\LaravelWebpay\Traits\PayWithWebpay;
 
 beforeEach(function () {
@@ -52,8 +54,41 @@ describe('needs to implement getAmountAttribute()', function () {
 
 describe('needs to implement markAsPaidWithWebpay()', function () {
     test('not implemented (returns a the default view)', function () {
-        expect($this->stubModelWithTrait->markAsPaidWithWebpay())
-            ->toBeView('webpay::responses.approved');
+        $card = new Class {
+            public static $latest_response;
+            public static $responses;
+            public static $order;
+
+            public static function setValues()
+            {
+                self::$latest_response = WebpayResponse::factory()->create();
+                self::$responses = WebpayResponse::factory(2)->create();
+                self::$order = WebpayOrder::factory()->create();
+            }
+        };
+
+        $card::setValues();
+
+        $stub = new Class {
+            use PayWithWebpay;
+    
+            public function markAsPaidWithWebpay()
+            {
+                dd($card::setValues());
+                $latest_response = $card->latest_response;
+                $responses = $this->getResponses();
+                $order = $this->getOrder();
+
+                return view('webpay::responses.approved', compact('latest_response', 'responses', 'order'));
+            }
+        };
+
+        $latest_response = $stub->getLatestResponse();
+        $responses = $stub->getResponses();
+        $order = $stub->getOrder();
+
+        expect($stub->markAsPaidWithWebpay())
+            ->toBeView('webpay::responses.approved', compact('latest_response', 'responses', 'order'));
     });
 
     test('implemented', function () {
