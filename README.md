@@ -110,6 +110,19 @@ Source: [Official Transbank Developers website](https://www.transbankdevelopers.
 
 When you are ready to be in production, you need to set `WEBPAY_IN_PRODUCTION` to `true`, and specify `WEBPAY_COMMERCE_CODE` and `WEBPAY_SECRET_KEY`.
 
+## Alternative usage
+
+If you don't want to import Trait, you can create or instanciate a order, and then, calling `LaravelWebpay::create($order)` method, for example:
+
+```php
+
+// In your controller or equivalent
+$order = YourOrder::where('id', 1)->first();
+
+// ❗️ Your order model needs to have: buy_order, session_id and amount fields
+return LaravelWebpay::create($order);
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
