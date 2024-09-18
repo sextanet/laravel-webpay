@@ -3,6 +3,8 @@
         --primary: #d5006c;
         --primary-hover: #b0035b;
         --border-radius: .5rem;
+        --code-color: #010027;
+        --code-comment-color: #ff0082c4;
     }
 
     * {
@@ -76,7 +78,7 @@
     }
 
     code, pre {
-        background: #000;
+        background: var(--code-color);
         color: #fff;
         padding: 30px;
         width: 80%;
@@ -89,13 +91,13 @@
 
     code::before, pre::before {
         white-space: pre;
-        color: #666;
         letter-spacing: .01rem;
         font-weight: 600;
         font-size: .850rem;
         display: block;
         margin-bottom: 10px;
         content: "// " attr(data-comment);
+        color: var(--code-comment-color);
     }
 
     .approved {
