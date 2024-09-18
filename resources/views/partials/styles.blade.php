@@ -106,6 +106,10 @@
         font-weight: 600;
     }
 
+    .hidden {
+        display: none;
+    }
+
     .sextanet {
         color: #fff;
         margin: 0 5px;

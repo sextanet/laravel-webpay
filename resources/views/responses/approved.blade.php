@@ -4,10 +4,12 @@
 
 @section('content')
 <div>This is your <span class="approved">approved</span> page</div>
+<div>
+    Click
+    <span style="text-decoration: underline; text-underline-offset: 5px; cursor: pointer;">here to toggle relevant fields</span>
+</div>
 
-<div>You need to implement your custom logic by doing</div>
-
-<pre>
+<pre class="hidden">
 - Id: {{ $latest_response->id }} (be careful with many responses)
 - Status: {{ $latest_response->status }}
 - VCI: {{ $latest_response->vci }}
@@ -16,6 +18,8 @@
 - Payment Type Code: {{ $latest_response->payment_type_code }}
 - Card number: {{ $latest_response->card_number }}
 </pre>
+
+<div>You need to implement your custom logic by doing</div>
 
 <pre>
 // YourOrderModel.php

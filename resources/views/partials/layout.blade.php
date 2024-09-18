@@ -22,11 +22,22 @@
     <script>
         const buttonsOnce = document.querySelectorAll('.button[once]');
 
-        buttonsOnce.forEach(button => {
+        buttonsOnce?.forEach(button => {
             button.addEventListener('click', function () {
                 button.innerHTML = 'Wait...';
                 button.style.cursor = 'disabled';
                 button.style.pointerEvents = 'none';
+            });
+        });
+
+
+        const hiddenFields = document.querySelectorAll('.hidden');
+
+        hiddenFields?.forEach(field => {
+            const showFields = field.previousElementSibling;
+
+            showFields.addEventListener('click', function () {
+                field.classList.toggle('hidden');
             });
         });
     </script>
