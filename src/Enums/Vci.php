@@ -17,7 +17,7 @@ enum Vci: string
 
     public function getDescription(): string
     {
-        return match ($this->value) {
+        return match ($this) {
             self::TSY => 'Autenticación exitosa',
             self::TSN => 'Autenticación rechazada',
             self::NP => 'No participa, sin autenticación',

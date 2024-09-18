@@ -11,6 +11,15 @@ it('has vci as enum', function () {
         ->toBeInstanceOf(Vci::class);
 });
 
+it('has vci as enum (description)', function () {
+    $response = WebpayResponse::factory()->create([
+        'vci' => Vci::TSY,
+    ]);
+
+    expect($response->vci->getDescription())
+        ->toBe('Autenticación exitosa');
+})->only();
+
 it('belongs to a order', function () {
     $order = WebpayOrder::factory()->create();
 
