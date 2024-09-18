@@ -6,7 +6,7 @@
 <div>This is your <span class="approved">approved</span> page</div>
 <div>
     Click
-    <span style="text-decoration: underline; text-underline-offset: 5px; cursor: pointer;">here to toggle relevant fields</span>
+    <span class="toggle">here to toggle relevant fields</span>
 </div>
 
 <pre class="hidden">

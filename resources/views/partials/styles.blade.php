@@ -106,6 +106,12 @@
         font-weight: 600;
     }
 
+    .toggle {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        cursor: pointer;
+    }
+
     .hidden {
         display: none;
     }
