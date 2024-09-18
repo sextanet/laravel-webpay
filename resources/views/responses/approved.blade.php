@@ -30,7 +30,7 @@ public function markAsPaidWithWebpay()
     <span class="toggle"> $latest_response</span>
 </div>
 
-<pre class="hidden">
+<pre class="hidden" data-comment="Dump (you can use any property or method)">
 $latest_response
   ->id = {{ $latest_response->id }} // 🚨 be careful with many responses
   ->status = {{ $latest_response->status }}

@@ -4,7 +4,7 @@
         --primary-hover: #b0035b;
         --border-radius: .5rem;
         --code-color: #010027;
-        --code-comment-color: #ff0082c4;
+        --code-comment-color: #d3a600;
     }
 
     * {
@@ -96,8 +96,8 @@
         font-size: .850rem;
         display: block;
         margin-bottom: 10px;
-        content: "// " attr(data-comment);
         color: var(--code-comment-color);
+        content: "// " attr(data-comment);
     }
 
     .approved {
