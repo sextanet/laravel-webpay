@@ -24,6 +24,7 @@
         height: 100px;
         background: rgba(0,0,0,.05);
         backdrop-filter: blur(1px);
+        top: 0;
     }
 
     main {
@@ -31,7 +32,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100vh;
         margin: 0;
         gap: 20px;
     }
@@ -86,17 +87,22 @@
         position: relative;
     }
 
-    code.response {
-        margin-bottom: 10px;
-    }
-
-    code.response::before {
-        content: '// 💡 Response for easy debug\A\A';
+    code::before, pre::before {
         white-space: pre;
         color: #666;
         letter-spacing: .01rem;
         font-weight: 600;
         font-size: .850rem;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    code.response::before {
+        content: '// 💡 Response for easy debug\A\A';
+    }
+
+    pre.yourModel::before {
+        content: '// YourModel.php';
     }
 
     .approved {

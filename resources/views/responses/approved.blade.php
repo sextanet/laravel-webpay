@@ -3,13 +3,11 @@
 @section('title', 'Approved')
 
 @section('content')
-<div>This is your <span class="approved">approved</span> page</div>
+<div>This is your <span class="approved">approved</span> endpoint</div>
 
 <div>Implement your custom logic by overriding the method</div>
 
-<pre>
-// YourOrderModel.php
-
+<pre class="yourModel">
 public function markAsPaidWithWebpay()
 {
     // 😎 Write here your cool logic
