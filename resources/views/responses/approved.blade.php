@@ -12,30 +12,36 @@
 
 public function markAsPaidWithWebpay()
 {
-    // 😎 Your custom logic, for example:
+    // 😎 Your custom logic: You can access to:
 
     $order = $this->webpay_order;
     $responses = $this->webpay_responses;
+    $latest_response = $this->latest_response;
+
+
+    // And then, return a view or redirect to another route
 
     return view('custom_view');
 }
 </pre>
 
 <div>
-    Click
-    <span class="toggle">here to toggle relevant fields</span>
+    Click or touch to see
+    <span class="toggle"> $latest_response</span>
 </div>
 
 <pre class="hidden">
-- Id: {{ $latest_response->id }} (be careful with many responses)
-- Status: {{ $latest_response->status }}
-- VCI: {{ $latest_response->vci }}
-- VCI (description): {{ $latest_response->vci->getDescription() }}
-- Amount: {{ $latest_response->amount }}
-- Authorization Code: {{ $latest_response->authorization_code }}
-- Payment Type Code: {{ $latest_response->payment_type_code }}
-- Payment Type Code (description): {{ $latest_response->payment_type_code->getDescription() }}
-- Card number: {{ $latest_response->card_number }}
+$latest_response
+  ->id = {{ $latest_response->id }} // 🚨 be careful with many responses
+  ->status = {{ $latest_response->status }}
+  ->status->getDescription() = {{ $latest_response->status->getDescription() }}
+  ->vci = {{ $latest_response->vci }}
+  ->vci->getDescription() = {{ $latest_response->vci->getDescription() }}
+  ->amount = {{ $latest_response->amount }}
+  ->authorization_code = {{ $latest_response->authorization_code }}
+  ->payment_type_code = {{ $latest_response->payment_type_code }}
+  ->payment_type_code->getDescription() = {{ $latest_response->payment_type_code->getDescription() }}
+  ->card_number = {{ $latest_response->card_number }}
 </pre>
 
 <x-webpay-debug/>

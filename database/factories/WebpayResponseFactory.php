@@ -3,6 +3,8 @@
 namespace SextaNet\LaravelWebpay\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use SextaNet\LaravelWebpay\Enums\PaymentTypeCode;
+use SextaNet\LaravelWebpay\Enums\Status;
 use SextaNet\LaravelWebpay\Enums\Vci;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use SextaNet\LaravelWebpay\Models\WebpayResponse;
@@ -16,11 +18,11 @@ class WebpayResponseFactory extends Factory
         return [
             'order_id' => $order = WebpayOrder::factory()->create(),
             'vci' => fake()->randomElement(Vci::class),
-            'status' => fake()->randomElement(['AUTHORIZED']),
+            'status' => fake()->randomElement(Status::class),
             'response_code' => fake()->randomElement(['0']),
             'amount' => fake()->randomFloat(2, 1000, 10000),
             'authorization_code' => fake()->randomNumber(4),
-            'payment_type_code' => fake()->randomElement(['VD']),
+            'payment_type_code' => fake()->randomElement(PaymentTypeCode::class),
             'accounting_date' => fake()->date(),
             'installments_number' => fake()->randomNumber(1),
             'installments_amount' => fake()->randomNumber(1),
