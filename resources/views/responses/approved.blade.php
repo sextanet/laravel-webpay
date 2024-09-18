@@ -19,9 +19,9 @@ public function markAsPaidWithWebpay()
     $latest_response = $this->latest_response;
 
 
-    // And then, return a view or redirect to another route
+    // And then, redirect to a specific route
 
-    return view('custom_view');
+    return to_route('your.successful.route');
 }
 </pre>
 
