@@ -3,7 +3,7 @@
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use SextaNet\LaravelWebpay\Models\WebpayResponse;
 
-it('belongs to a response', function () {
+it('belongs to a order', function () {
     $order = WebpayOrder::factory()->create();
 
     $response = WebpayResponse::factory()->create([
