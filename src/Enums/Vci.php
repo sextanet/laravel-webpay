@@ -28,6 +28,7 @@ enum Vci: string
             self::EOP => 'Error operacional',
             self::BNA => 'BIN no adherido',
             self::ENA => 'Emisor no adherido',
+            default => 'Desconocido',
         };
     }
 }
