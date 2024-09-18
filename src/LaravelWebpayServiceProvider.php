@@ -3,6 +3,7 @@
 namespace SextaNet\LaravelWebpay;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
 use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -32,14 +33,20 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
         Blade::component('webpay::partials.debug', 'webpay-debug');
     }
 
-    protected function registerRoutes(string $file): void
+    protected function registerRoutes(... $files): void
     {
-        $this->loadRoutesFrom(__DIR__."/routes/{$file}");
+        foreach ($files as $file) {
+            $this->loadRoutesFrom(__DIR__."/routes/{$file}");
+        }
     }
 
     public function packageRegistered()
     {
         $this->registerBladeComponents();
-        $this->registerRoutes('web.php');
+        
+        Route::middleware('web')
+            ->group(function () {
+                $this->registerRoutes('web.php');
+            });
     }
 }

@@ -12,7 +12,7 @@ Route::get('webpay/response', function () {
     }
 
     return LaravelWebpay::responseCancelled();
-})->name('webpay.response')->middleware(['web']);
+})->name('webpay.response');
 
 // Route::any('webpay/response', function () {
 //     $session = request('TBK_ID_SESION') ?? null;
@@ -24,8 +24,8 @@ Route::get('webpay/retry/session/{session_id}', function (string $session_id) {
     $order = WebpayOrder::where('session_id', $session_id)->firstOrFail();
 
     dd('Retry order', $order);
-})->name('webpay.session.retry')->middleware(['web']);
+})->name('webpay.session.retry');
 
 Route::get('webpay/cancelled', function () {
     dd('Orden cancelada. ¿Quieres crear la orden otra vez?');
-})->name('webpay.cancelled')->middleware(['web']);
+})->name('webpay.cancelled');
