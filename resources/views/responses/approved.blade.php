@@ -5,14 +5,16 @@
 @section('content')
 <div>This is your <span class="approved">approved</span> page</div>
 
-<div>You need to implement your custom logic by doing</div>
+<div>Implement your custom logic by overriding the method</div>
 
 <pre>
 // YourOrderModel.php
 
 public function markAsPaidWithWebpay()
 {
-    // 😎 Your custom logic: You can access to:
+    // 😎 Write here your cool logic
+
+    // Available data:
 
     $order = $this->webpay_order;
     $responses = $this->webpay_responses;
