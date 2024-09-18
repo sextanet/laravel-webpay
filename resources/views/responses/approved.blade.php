@@ -7,7 +7,7 @@
 
 <div>Implement your custom logic by overriding the method</div>
 
-<pre class="yourModel">
+<pre class="yourModel" data-comment="YourModel.php">
 public function markAsPaidWithWebpay()
 {
     // 😎 Write here your cool logic

@@ -95,14 +95,7 @@
         font-size: .850rem;
         display: block;
         margin-bottom: 10px;
-    }
-
-    code.response::before {
-        content: '// 💡 Response for easy debug\A\A';
-    }
-
-    pre.yourModel::before {
-        content: '// YourModel.php';
+        content: "// " attr(data-comment);
     }
 
     .approved {
