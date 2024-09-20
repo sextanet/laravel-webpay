@@ -36,7 +36,7 @@ trait PayWithWebpay
         return view('webpay::responses.approved', compact('latest_response', 'responses', 'order'));
     }
 
-    public function markAsCancelledWithWebpay()
+    public function showDefaultCancelledView()
     {
         $latest_response = $this->latest_webpay_response;
         $responses = $this->webpay_responses;

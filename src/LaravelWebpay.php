@@ -80,11 +80,11 @@ class LaravelWebpay extends BaseWebpay
         return view('webpay::responses.rejected', compact('order'));
     }
 
-    public static function customCancelledUrl(): ?RedirectResponse
+    public static function getCancelledUrl(): ?RedirectResponse
     {
-        if ($cancelled_url = session('cancelled_url')) {
-            return redirect(session('cancelled_url', $cancelled_url));
-        }
+        return session('cancelled_url')
+            ? redirect(session('cancelled_url'))
+            : null;
     }
 
     public static function responseCancelled()
@@ -92,8 +92,8 @@ class LaravelWebpay extends BaseWebpay
         $token = request('TBK_TOKEN');
         $order = WebpayOrder::findByToken($token)->first();
 
-        return self::customCancelledUrl()
-            ?? $order->orderable->markAsCancelledWithWebpay();
+        return self::getCancelledUrl()
+            ?? $order->orderable->showDefaultCancelledView();
 
         // $session = request('TBK_ID_SESION');
 
