@@ -44,7 +44,9 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
     {
         $this->registerBladeComponents();
         
-        Route::middleware('web')
+        Route::prefix(config('webpay.prefix'))
+            ->name(config('webpay.name'))
+            ->middleware('web')
             ->group(function () {
                 $this->registerRoutes('web.php');
             });
