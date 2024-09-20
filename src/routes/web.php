@@ -26,6 +26,6 @@ Route::get('retry/session/{session_id}', function (string $session_id) {
     dd('Retry order', $order);
 })->name('session.retry');
 
-Route::get('cancelled', function () {
-    dd('Orden cancelada. ¿Quieres crear la orden otra vez?');
-})->name('cancelled');
+// Route::get('cancelled', function () {
+//     dd('Orden cancelada. ¿Quieres crear la orden otra vez?');
+// })->name('cancelled');

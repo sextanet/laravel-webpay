@@ -83,6 +83,8 @@ class LaravelWebpay extends BaseWebpay
         $token = request('TBK_TOKEN');
         $order = WebpayOrder::findByToken($token);
 
-        return view('webpay::responses.cancelled', compact('order'));
+        $session = request('TBK_ID_SESION');
+
+        return view('webpay::responses.cancelled', compact('order', 'session'));
     }
 }

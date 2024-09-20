@@ -8,7 +8,7 @@
     </div>
 
     <div class="options">
-        <a class="button" href="{{ route('webpay.create') }}" once>
+        <a class="button" href="{{ route('webpay.session.retry', $session) }}" once>
             Retry
         </a>
     </div>
