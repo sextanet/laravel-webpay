@@ -3,6 +3,7 @@
 namespace SextaNet\LaravelWebpay;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use SextaNet\LaravelWebpay\Exceptions\RouteDoesNotExists;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
@@ -79,28 +80,32 @@ class LaravelWebpay extends BaseWebpay
         return view('webpay::responses.rejected', compact('order'));
     }
 
+    public static function customCancelledUrl(): ?RedirectResponse
+    {
+        if ($cancelled_url = session('cancelled_url')) {
+            return redirect(session('cancelled_url', $cancelled_url));
+        }
+    }
+
     public static function responseCancelled()
     {
         $token = request('TBK_TOKEN');
         $order = WebpayOrder::findByToken($token)->first();
 
-        if (session()->has('cancelled_route')) {
-            return to_route(session('cancelled_route'));
-        }
-
-        return $order->orderable->markAsCancelledWithWebpay();
+        return self::customCancelledUrl()
+            ?? $order->orderable->markAsCancelledWithWebpay();
 
         // $session = request('TBK_ID_SESION');
 
         // return view('webpay::responses.cancelled', compact('order', 'session'));
     }
 
-    public static function cancelledRoute(string $route): void
+    public static function cancelledUrl(string $route): void
     {
-        if (! \Route::has($route)) {
-            throw new RouteDoesNotExists($route);
-        }
+        // if (! \Route::has($route)) {
+        //     throw new RouteDoesNotExists($route);
+        // }
 
-        session()->flash('cancelled_route', $route);
+        session()->flash('cancelled_url', $route);
     }
 }
