@@ -37,6 +37,15 @@ trait PayWithWebpay
         return view('webpay::responses.approved', compact('latest_response', 'responses', 'order'));
     }
 
+    public function markAsCancelledWithWebpay()
+    {
+        $latest_response = $this->latest_webpay_response;
+        $responses = $this->webpay_responses;
+        $order = $this->webpay_order;
+
+        return view('webpay::responses.cancelled', compact('latest_response', 'responses', 'order'));
+    }
+
     public function payWithWebpay()
     {
         return LaravelWebpay::create($this);

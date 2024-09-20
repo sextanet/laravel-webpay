@@ -23,7 +23,11 @@ Route::get('response', function () {
 Route::get('retry/session/{session_id}', function (string $session_id) {
     $order = WebpayOrder::where('session_id', $session_id)->firstOrFail();
 
-    dd('Retry order', $order);
+    dd($order->orderable->markAsCancelledWithWebpay());
+
+    // return Laravelwebpay::commit($order->session_id);
+
+    // dd('Retry order', $order);
 })->name('session.retry');
 
 // Route::get('cancelled', function () {

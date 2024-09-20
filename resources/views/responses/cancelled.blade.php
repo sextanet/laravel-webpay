@@ -7,11 +7,11 @@
         Operation cancelled. Please try again
     </div>
 
-    <div class="options">
+    {{-- <div class="options">
         <a class="button" href="{{ route('webpay.session.retry', $session) }}" once>
-            Retry
+            Go back
         </a>
-    </div>
+    </div> --}}
 
     <x-webpay-debug/>
 @endsection

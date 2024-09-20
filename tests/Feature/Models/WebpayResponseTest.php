@@ -43,7 +43,7 @@ it('has status as enum', function () {
 
     expect($response->status)
         ->toBeInstanceOf(Status::class);
-})->only();
+});
 
 it('has status as enum (description)', function () {
     $response = WebpayResponse::factory()->create([
@@ -52,7 +52,7 @@ it('has status as enum (description)', function () {
 
     expect($response->status->getDescription())
         ->toBe('Autorizada');
-})->only();
+});
 
 it('belongs to a order', function () {
     $order = WebpayOrder::factory()->create();
