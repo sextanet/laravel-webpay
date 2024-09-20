@@ -100,7 +100,7 @@ class LaravelWebpay extends BaseWebpay
         // return view('webpay::responses.cancelled', compact('order', 'session'));
     }
 
-    public static function cancelledUrl(string $route): void
+    public static function setCancelledUrl(string $route): void
     {
         // if (! \Route::has($route)) {
         //     throw new RouteDoesNotExists($route);
