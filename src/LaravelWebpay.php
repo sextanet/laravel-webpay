@@ -2,8 +2,10 @@
 
 namespace SextaNet\LaravelWebpay;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\View;
+use SextaNet\LaravelWebpay\Exceptions\RouteDoesNotExists;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use Transbank\Webpay\WebpayPlus\Transaction;
 
@@ -83,10 +85,23 @@ class LaravelWebpay extends BaseWebpay
         $token = request('TBK_TOKEN');
         $order = WebpayOrder::findByToken($token)->first();
 
+        if (session()->has('cancelled_route')) {
+            return to_route(session('cancelled_route'));
+        }
+
         return $order->orderable->markAsCancelledWithWebpay();
 
         // $session = request('TBK_ID_SESION');
 
         // return view('webpay::responses.cancelled', compact('order', 'session'));
+    }
+
+    public static function cancelledRoute(string $route): void
+    {   
+        if (! \Route::has($route)) {
+            throw new RouteDoesNotExists($route);
+        }
+
+        session()->flash('cancelled_route', $route);
     }
 }
