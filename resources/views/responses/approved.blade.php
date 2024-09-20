@@ -3,7 +3,7 @@
 @section('title', 'Approved')
 
 @section('content')
-<div>This is your <span class="approved">approved</span> endpoint</div>
+<div>This is the default <span class="approved">approved</span> endpoint</div>
 
 <div>Implement your custom logic by overriding the method</div>
 

@@ -107,6 +107,13 @@
         font-weight: 600;
     }
 
+    .cancelled {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 0 2px;
+        font-weight: 600;
+    }
+
     .toggle {
         text-decoration: underline;
         text-underline-offset: 5px;
