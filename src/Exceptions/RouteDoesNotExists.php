@@ -4,7 +4,8 @@ namespace SextaNet\LaravelWebpay\Exceptions;
 
 class RouteDoesNotExists extends Exception
 {
-    public function __construct(public string $name) {
+    public function __construct(public string $name)
+    {
         $this->message = $this->message();
     }
 

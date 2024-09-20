@@ -33,7 +33,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
         Blade::component('webpay::partials.debug', 'webpay-debug');
     }
 
-    protected function registerRoutes(... $files): void
+    protected function registerRoutes(...$files): void
     {
         foreach ($files as $file) {
             $this->loadRoutesFrom(__DIR__."/routes/{$file}");
@@ -43,7 +43,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         $this->registerBladeComponents();
-        
+
         Route::prefix(config('webpay.prefix'))
             ->name(config('webpay.name'))
             ->middleware('web')

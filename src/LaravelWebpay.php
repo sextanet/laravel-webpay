@@ -2,7 +2,6 @@
 
 namespace SextaNet\LaravelWebpay;
 
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\View;
 use SextaNet\LaravelWebpay\Exceptions\RouteDoesNotExists;
@@ -97,7 +96,7 @@ class LaravelWebpay extends BaseWebpay
     }
 
     public static function cancelledRoute(string $route): void
-    {   
+    {
         if (! \Route::has($route)) {
             throw new RouteDoesNotExists($route);
         }

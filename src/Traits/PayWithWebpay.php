@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use SextaNet\LaravelWebpay\Exceptions\MissingAmount;
 use SextaNet\LaravelWebpay\Exceptions\MissingBuyOrder;
-use SextaNet\LaravelWebpay\Exceptions\MissingMarkAsPaidWithWebpay;
 use SextaNet\LaravelWebpay\Facades\LaravelWebpay;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use SextaNet\LaravelWebpay\Models\WebpayResponse;

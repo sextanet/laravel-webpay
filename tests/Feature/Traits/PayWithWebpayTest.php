@@ -7,7 +7,8 @@ use SextaNet\LaravelWebpay\Models\WebpayResponse;
 use SextaNet\LaravelWebpay\Traits\PayWithWebpay;
 
 beforeEach(function () {
-    $this->stubModelWithTrait = new class {
+    $this->stubModelWithTrait = new class
+    {
         use PayWithWebpay;
     };
 });
@@ -18,9 +19,10 @@ describe('needs to implement getBuyOrderAttribute()', function () {
     })->expectException(MissingBuyOrder::class);
 
     test('implemented', function () {
-        $stub = new Class {
+        $stub = new class
+        {
             use PayWithWebpay;
-    
+
             public function getBuyOrderAttribute(): string
             {
                 return 1000;
@@ -38,9 +40,10 @@ describe('needs to implement getAmountAttribute()', function () {
     })->expectException(MissingAmount::class);
 
     test('implemented', function () {
-        $stub = new Class {
+        $stub = new class
+        {
             use PayWithWebpay;
-    
+
             public function getAmountAttribute(): string
             {
                 return 1000;
@@ -58,9 +61,10 @@ describe('needs to implement markAsPaidWithWebpay()', function () {
         cache()->put('responses', WebpayResponse::factory(2)->create());
         cache()->put('order', WebpayOrder::factory()->create());
 
-        $stub = new Class {
+        $stub = new class
+        {
             use PayWithWebpay;
-    
+
             public function markAsPaidWithWebpay()
             {
                 $latest_response = cache()->get('latest_response');
@@ -80,9 +84,10 @@ describe('needs to implement markAsPaidWithWebpay()', function () {
     });
 
     test('implemented', function () {
-        $stub = new Class {
+        $stub = new class
+        {
             use PayWithWebpay;
-    
+
             public function markAsPaidWithWebpay()
             {
                 return true;
@@ -103,9 +108,10 @@ describe('needs to implement getBuyOrderAttribute to get getSessionIdAttribute()
     })->expectException(MissingBuyOrder::class);
 
     test('implemented', function () {
-        $stub = new Class {
+        $stub = new class
+        {
             use PayWithWebpay;
-    
+
             public function getSessionIdAttribute(): string
             {
                 return 1000;
