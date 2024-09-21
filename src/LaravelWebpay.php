@@ -79,16 +79,6 @@ class LaravelWebpay extends BaseWebpay
         return $store->order->orderable->markAsPaidWithWebpay();
     }
 
-    public static function responseRejected(): View
-    {
-        $token = request('token_ws');
-        $order = WebpayOrder::findByToken($token)->first();
-
-        dd($order);
-
-        return view('webpay::responses.rejected', compact('order'));
-    }
-
     public static function responseCancelled()
     {
         $token = request('TBK_TOKEN');
@@ -100,6 +90,15 @@ class LaravelWebpay extends BaseWebpay
         // $session = request('TBK_ID_SESION');
 
         // return view('webpay::responses.cancelled', compact('order', 'session'));
+    }
+
+    public static function responseRejected(): View
+    {
+        $token = request('token_ws');
+        $order = WebpayOrder::findByToken($token)->first();
+
+        return self::getRejectedUrl()
+            ?? $order->orderable->showDefaultRejectedView();
     }
 
     public static function setUrlByType(string $type, string $url): void

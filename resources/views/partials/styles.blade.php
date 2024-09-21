@@ -107,7 +107,7 @@
         font-weight: 600;
     }
 
-    .cancelled {
+    .cancelled, .rejected {
         background: #f8d7da;
         color: #721c24;
         padding: 0 2px;

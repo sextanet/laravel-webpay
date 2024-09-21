@@ -3,13 +3,13 @@
 @section('title', 'Rejected')
 
 @section('content')
-    <div>Your transaction was rejected</div>
+    <div>Your transaction was <span class="rejected">rejected</span></div>
 
-    <div class="options">
+    {{-- <div class="options">
         <a class="button" href="{{ route('webpay.create') }}" once>
             Retry
         </a>
-    </div>
+    </div> --}}
 
     <x-webpay-debug/>
 @endsection
