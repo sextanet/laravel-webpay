@@ -3,13 +3,22 @@
 @section('title', 'Rejected')
 
 @section('content')
-    <div>Your transaction was <span class="rejected">rejected</span></div>
+<div>This is the default <span class="rejected">rejected</span> endpoint</div>
 
-    {{-- <div class="options">
-        <a class="button" href="{{ route('webpay.create') }}" once>
-            Retry
-        </a>
-    </div> --}}
+<div>Operation rejected. Please try again</div>
 
-    <x-webpay-debug/>
+
+<div>Implement your custom logic by specifying before payWithWebpay() method</div>
+
+<pre data-comment="Add this line before $order->payWithWebpay()">
+LaravelWebpay::setRejectedUrl(route('cancelled')); // 👈 Before you need to do this
+</pre>
+
+{{-- <div class="options">
+    <a class="button" href="{{ route('webpay.create') }}" once>
+        Retry
+    </a>
+</div> --}}
+
+<x-webpay-debug/>
 @endsection
