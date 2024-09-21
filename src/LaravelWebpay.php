@@ -75,7 +75,9 @@ class LaravelWebpay extends BaseWebpay
     public static function responseRejected(): View
     {
         $token = request('token_ws');
-        $order = WebpayOrder::findByToken($token);
+        $order = WebpayOrder::findByToken($token)->first();
+
+        dd($order);
 
         return view('webpay::responses.rejected', compact('order'));
     }
