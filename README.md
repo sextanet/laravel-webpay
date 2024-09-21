@@ -95,6 +95,14 @@ return $order->payWithWebpay(); // 👈 Done!
 
 Easy peasy!
 
+## Setting custom pages
+
+If you want to set custom pages in failed cases (cancelled)
+
+```php
+LaravelWebpay::setCancelledUrl('your-cancelled-page');
+```
+
 ## Testing cards
 
 |Type        |Numbers            |Result  |
