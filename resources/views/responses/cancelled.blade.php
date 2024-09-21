@@ -10,7 +10,7 @@
 <div>Implement your custom logic by specifying before payWithWebpay() method</div>
 
 <pre data-comment="Add this line before $order->payWithWebpay()">
-LaravelWebpay::setCancelledUrl(route('cancelled')); // 👈 Before you need to do this
+LaravelWebpay::setCancelledUrl(route('cancelled')); // 👈 Set your custom route
 </pre>
 
 {{-- <div class="options">
