@@ -95,12 +95,20 @@ return $order->payWithWebpay(); // 👈 Done!
 
 Easy peasy!
 
-## Setting custom pages
+## Setting custom URLs
 
-If you want to set custom pages in failed cases (cancelled)
+For convenience, you can set custom pages for each status before calling `payWithOrder() method`
+
+### Cancelled
 
 ```php
-LaravelWebpay::setCancelledUrl('your-cancelled-page');
+LaravelWebpay::setCancelledUrl('/cancelled-page');
+```
+
+### Rejected
+
+```php
+LaravelWebpay::setRejectedUrl('/rejected-page');
 ```
 
 ## Testing cards

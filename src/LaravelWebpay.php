@@ -92,7 +92,7 @@ class LaravelWebpay extends BaseWebpay
         // return view('webpay::responses.cancelled', compact('order', 'session'));
     }
 
-    public static function responseRejected(): View
+    public static function responseRejected()
     {
         $token = request('token_ws');
         $order = WebpayOrder::findByToken($token)->first();
