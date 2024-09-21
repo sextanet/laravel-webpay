@@ -107,21 +107,21 @@ class LaravelWebpay extends BaseWebpay
 
     public static function setCancelledUrl(string $url): void
     {
-        self::setUrlByType('cancelled_url', $url);
+        self::setUrlByType(config('webpay.sessions.cancelled_url'), $url);
     }
     
     public static function getCancelledUrl(): ?RedirectResponse
     {
-        return self::getUrlByType('cancelled_url');
+        return self::getUrlByType(config('webpay.sessions.cancelled_url'));
     }
 
     public static function setRejectedUrl(string $url): void
     {
-        self::setUrlByType('rejected_url', $url);
+        self::setUrlByType(config('webpay.sessions.rejected_url'), $url);
     }
     
     public static function getRejectedUrl(): ?RedirectResponse
     {
-        return self::getUrlByType('rejected_url');
+        return self::getUrlByType(config('webpay.sessions.rejected_url'));
     }
 }
