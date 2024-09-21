@@ -15,6 +15,8 @@ trait StoreDB
             'buy_order' => $order->buy_order,
             'session_id' => $order->session_id,
             'amount' => $order->amount,
+            'orderable_type' => get_class($order),
+            'orderable_id' => $order->id,
         ]);
     }
 

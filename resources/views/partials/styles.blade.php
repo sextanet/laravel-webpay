@@ -3,6 +3,8 @@
         --primary: #d5006c;
         --primary-hover: #b0035b;
         --border-radius: .5rem;
+        --code-color: #010027;
+        --code-comment-color: #d3a600;
     }
 
     * {
@@ -24,6 +26,7 @@
         height: 100px;
         background: rgba(0,0,0,.05);
         backdrop-filter: blur(1px);
+        top: 0;
     }
 
     main {
@@ -31,7 +34,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100vh;
         margin: 0;
         gap: 20px;
     }
@@ -74,8 +77,8 @@
         background: var(--primary-hover);
     }
 
-    code {
-        background: #000;
+    code, pre {
+        background: var(--code-color);
         color: #fff;
         padding: 30px;
         width: 80%;
@@ -86,17 +89,39 @@
         position: relative;
     }
 
-    code.response {
-        margin-bottom: 10px;
-    }
-
-    code.response::before {
-        content: '// 💡 Response for easy debug\A\A';
+    code::before, pre::before {
         white-space: pre;
-        color: #666;
         letter-spacing: .01rem;
         font-weight: 600;
         font-size: .850rem;
+        display: block;
+        margin-bottom: 10px;
+        color: var(--code-comment-color);
+        content: "// " attr(data-comment);
+    }
+
+    .approved {
+        background: #d4edda;
+        color: #155724;
+        padding: 0 2px;
+        font-weight: 600;
+    }
+
+    .cancelled, .rejected {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 0 2px;
+        font-weight: 600;
+    }
+
+    .toggle {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        cursor: pointer;
+    }
+
+    .hidden {
+        display: none;
     }
 
     .sextanet {

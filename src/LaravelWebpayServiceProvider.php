@@ -5,7 +5,6 @@ namespace SextaNet\LaravelWebpay;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
-use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -29,35 +28,27 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
             ->hasCommand(LaravelWebpayCommand::class);
     }
 
-    public function registerBlade()
+    protected function registerBladeComponents()
     {
         Blade::component('webpay::partials.debug', 'webpay-debug');
     }
 
+    protected function registerRoutes(...$files): void
+    {
+        foreach ($files as $file) {
+            $this->loadRoutesFrom(__DIR__."/routes/{$file}");
+        }
+    }
+
     public function packageRegistered()
     {
-        $this->registerBlade();
+        $this->registerBladeComponents();
 
-        Route::get('webpay/response', function () {
-            $token = request('token_ws');
-
-            if ($token) { // successfully payment
-                return LaravelWebpay::commit($token);
-            }
-
-            return LaravelWebpay::responseCanceled();
-        })->name('webpay.response');
-
-        // Route::any('webpay/response', function () {
-        //     $session = request('TBK_ID_SESION') ?? null;
-
-        //     return view('webpay::retry', compact('session'));
-        // })->name('webpay.response.retry');
-
-        Route::get('webpay/retry/session/{session_id}', function (string $session_id) {
-            $order = WebpayOrder::where('session_id', $session_id)->firstOrFail();
-
-            dd('Retry order', $order);
-        })->name('webpay.session.retry');
+        Route::prefix(config('webpay.prefix'))
+            ->name(config('webpay.name'))
+            ->middleware('web')
+            ->group(function () {
+                $this->registerRoutes('web.php');
+            });
     }
 }
