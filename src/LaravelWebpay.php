@@ -5,7 +5,7 @@ namespace SextaNet\LaravelWebpay;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use SextaNet\LaravelWebpay\Exceptions\RouteDoesNotExists;
+use SextaNet\LaravelWebpay\Exceptions\MissingProductionKeys;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
 use Transbank\Webpay\WebpayPlus\Transaction;
 
@@ -19,7 +19,7 @@ class LaravelWebpay extends BaseWebpay
             return $instance;
         }
 
-        static::checkConfig();
+        static::checkProductionKeys();
 
         return $instance->configureForProduction(
             config('webpay.commerce_code'),
@@ -27,11 +27,18 @@ class LaravelWebpay extends BaseWebpay
         );
     }
 
-    public static function checkConfig(): void
+    protected static function hasKeys(): bool
     {
-        if (! config('webpay.commerce_code') || ! config('webpay.secret')) {
-            throw new \Exception('Commerce code and secret key are required when you are in production mode');
+        return config('webpay.commerce_code') && config('webpay.secret_key');
+    }
+
+    public static function checkProductionKeys(): MissingProductionKeys|null
+    {
+        if (! static::hasKeys()) {
+            throw new MissingProductionKeys;
         }
+
+        return null;
     }
 
     public static function create(Model $orderClass): View
