@@ -141,9 +141,6 @@ $order = YourOrder::where('id', 1)->first();
 return LaravelWebpay::create($order);
 ```
 
-## Cancelled status
-Please take care about
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
