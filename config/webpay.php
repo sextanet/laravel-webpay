@@ -52,5 +52,5 @@ return [
     'sessions' => [
         'rejected_url' => env('WEBPAY_SESSIONS_REJECTED_URL', 'webpay.rejected_url'),
         'cancelled_url' => env('WEBPAY_SESSIONS_CANCELLED_URL', 'webpay.cancelled_url'),
-    ]
+    ],
 ];
