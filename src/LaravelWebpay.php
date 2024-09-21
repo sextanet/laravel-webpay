@@ -93,9 +93,14 @@ class LaravelWebpay extends BaseWebpay
         // return view('webpay::responses.cancelled', compact('order', 'session'));
     }
 
-    public static function setCancelledUrl(string $route): void
+    public static function setUrlByType(string $type, string $url): void
     {
-        session()->flash('cancelled_url', $route);
+        session()->flash($type, $url);
+    }
+
+    public static function setCancelledUrl(string $url): void
+    {
+        self::setUrlByType('cancelled_url', $url);
     }
     
     public static function getCancelledUrl(): ?RedirectResponse
@@ -105,9 +110,9 @@ class LaravelWebpay extends BaseWebpay
             : null;
     }
 
-    public static function setRejectedUrl(string $route): void
+    public static function setRejectedUrl(string $url): void
     {
-        session()->flash('rejected_url', $route);
+        self::setUrlByType('rejected_url', $url);
     }
     
     public static function getRejectedUrl(): ?RedirectResponse
