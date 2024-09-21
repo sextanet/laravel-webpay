@@ -95,10 +95,6 @@ class LaravelWebpay extends BaseWebpay
 
     public static function setCancelledUrl(string $route): void
     {
-        // if (! \Route::has($route)) {
-        //     throw new RouteDoesNotExists($route);
-        // }
-
         session()->flash('cancelled_url', $route);
     }
     
@@ -106,6 +102,18 @@ class LaravelWebpay extends BaseWebpay
     {
         return session('cancelled_url')
             ? redirect(session('cancelled_url'))
+            : null;
+    }
+
+    public static function setRejectedUrl(string $route): void
+    {
+        session()->flash('rejected_url', $route);
+    }
+    
+    public static function getRejectedUrl(): ?RedirectResponse
+    {
+        return session('rejected_url')
+            ? redirect(session('rejected_url'))
             : null;
     }
 }
