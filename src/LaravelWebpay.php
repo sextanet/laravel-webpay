@@ -32,7 +32,7 @@ class LaravelWebpay extends BaseWebpay
         return config('webpay.commerce_code') && config('webpay.secret_key');
     }
 
-    public static function checkProductionKeys(): MissingProductionKeys|null
+    public static function checkProductionKeys(): ?MissingProductionKeys
     {
         if (! static::hasKeys()) {
             throw new MissingProductionKeys;
@@ -117,7 +117,7 @@ class LaravelWebpay extends BaseWebpay
     {
         self::setUrlByType(config('webpay.sessions.cancelled_url'), $url);
     }
-    
+
     public static function getCancelledUrl(): ?RedirectResponse
     {
         return self::getUrlByType(config('webpay.sessions.cancelled_url'));
@@ -127,7 +127,7 @@ class LaravelWebpay extends BaseWebpay
     {
         self::setUrlByType(config('webpay.sessions.rejected_url'), $url);
     }
-    
+
     public static function getRejectedUrl(): ?RedirectResponse
     {
         return self::getUrlByType(config('webpay.sessions.rejected_url'));

@@ -50,7 +50,7 @@ trait PayWithWebpay
         $latest_response = $this->latest_webpay_response;
         $responses = $this->webpay_responses;
         $order = $this->webpay_order;
-        
+
         return view('webpay::responses.rejected', compact('order'));
     }
 
