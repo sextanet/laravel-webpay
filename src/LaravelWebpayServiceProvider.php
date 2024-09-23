@@ -4,7 +4,7 @@ namespace SextaNet\LaravelWebpay;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
-use SextaNet\LaravelWebpay\Commands\LaravelWebpayCommand;
+use SextaNet\LaravelWebpay\Commands\SextaNetThanksCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -25,7 +25,7 @@ class LaravelWebpayServiceProvider extends PackageServiceProvider
                 'create_webpay_orders_table',
                 'create_webpay_responses_table',
             ])
-            ->hasCommand(LaravelWebpayCommand::class);
+            ->hasCommand(SextaNetThanksCommand::class);
     }
 
     protected function registerBladeComponents()
