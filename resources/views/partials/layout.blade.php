@@ -16,7 +16,7 @@
     </main>
 
     <footer>
-        Made with ♥️ in <a class="sextanet" href="https://sextanet.com" target="_blank">{{ '<sextanet/>' }}</a>
+        Made with ♥️ in <a class="sextanet" href="https://sextanet.com/?service=laravel-webpay" target="_blank">{{ '<sextanet/>' }}</a>
     </footer>
 
     <script>
