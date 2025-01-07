@@ -13,33 +13,33 @@
     
     <main>
         @yield('content')
+
+        <div class="give-us-a-star">
+            <div class="content">
+                <div>
+                    <div class="question">Did it help you?</div>
+                    <div class="description">
+                        <div>This is a <span class="open-source">Open Source</span> package</div>
+                        <div>Give us a star on GitHub! ⭐️</div>
+                    </div>
+                </div>
+                <div class="star">
+                    <a href="https://github.com/sextanet/laravel-webpay" target="_blank">
+                        <img src="https://img.shields.io/github/stars/sextanet/laravel-webpay?style=social" alt="GitHub stars">
+                    </a>
+                </div>
+
+                <div class="buttons">
+                    <button class="small" id="close_give_star">Close</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
         Made with ♥️ in <a class="sextanet" href="https://sextanet.com/?service=laravel-webpay" target="_blank">{{ '<sextanet/>' }}</a>
     </footer>
 
-    <script>
-        const buttonsOnce = document.querySelectorAll('.button[once]');
-
-        buttonsOnce?.forEach(button => {
-            button.addEventListener('click', function () {
-                button.innerHTML = 'Wait...';
-                button.style.cursor = 'disabled';
-                button.style.pointerEvents = 'none';
-            });
-        });
-
-
-        const hiddenFields = document.querySelectorAll('.hidden');
-
-        hiddenFields?.forEach(field => {
-            const showFields = field.previousElementSibling;
-
-            showFields.addEventListener('click', function () {
-                field.classList.toggle('hidden');
-            });
-        });
-    </script>
+    @include('webpay::partials.scripts')
 </body>
 </html>
