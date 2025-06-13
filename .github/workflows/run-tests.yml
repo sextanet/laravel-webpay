@@ -49,6 +49,11 @@ jobs:
           echo "::add-matcher::${{ runner.tool_cache }}/php.json"
           echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
+      - name: Downgrade Pest for Laravel 10 and 11
+        if: matrix.laravel == '10.*' || matrix.laravel == '11.*'
+        run: |
+          composer require pestphp/pest:^2 pestphp/pest-plugin-arch:^2 pestphp/pest-plugin-laravel:^2 --dev --no-interaction --no-update
+
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" --no-interaction --no-update
