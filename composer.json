@@ -20,7 +20,7 @@
         "illuminate/contracts": "^10.0||^11.0||^12.0",
         "illuminate/support": "^10.0||^11.0||^12.0",
         "spatie/laravel-package-tools": "^1.16",
-        "transbank/transbank-sdk": "^4.0"
+        "transbank/transbank-sdk": "^5.1"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
