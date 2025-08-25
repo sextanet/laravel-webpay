@@ -20,7 +20,7 @@ class LaravelWebpay
 
     public static function instance(): Transaction
     {
-        return config('webpay.transaction_instance')
+        return config('webpay.in_production')
             ? static::createTransactionForProduction()
             : static::createTransactionForIntegration();
     }
