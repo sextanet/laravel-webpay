@@ -7,23 +7,27 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use SextaNet\LaravelWebpay\Exceptions\MissingProductionKeys;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
+use SextaNet\LaravelWebpay\Traits\StoreDB;
 use Transbank\Webpay\WebpayPlus\Transaction;
 
-class LaravelWebpay extends BaseWebpay
+class LaravelWebpay
 {
+    protected static string $api_key = '579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C';
+
+    protected static string $commerce_code = '597055555532';
+
+    use StoreDB;
+
     public static function instance(): Transaction
     {
-        return config('webpay.transaction_instance')
+        return config('webpay.in_production')
             ? static::createTransactionForProduction()
             : static::createTransactionForIntegration();
     }
 
     protected static function createTransactionForIntegration(): Transaction
     {
-        $api_key = '579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C';
-        $commerce_code = '597055555532';
-
-        return Transaction::buildForIntegration($api_key, $commerce_code);
+        return Transaction::buildForIntegration(static::$api_key, static::$commerce_code);
     }
 
     protected static function createTransactionForProduction(): Transaction
