@@ -7,10 +7,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use SextaNet\LaravelWebpay\Exceptions\MissingProductionKeys;
 use SextaNet\LaravelWebpay\Models\WebpayOrder;
+use SextaNet\LaravelWebpay\Traits\StoreDB;
 use Transbank\Webpay\WebpayPlus\Transaction;
 
-class LaravelWebpay extends BaseWebpay
+class LaravelWebpay
 {
+    use StoreDB;
+    
     public static function instance(): Transaction
     {
         return config('webpay.transaction_instance')
