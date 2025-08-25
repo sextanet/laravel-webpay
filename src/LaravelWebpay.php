@@ -13,18 +13,24 @@ class LaravelWebpay extends BaseWebpay
 {
     public static function instance(): Transaction
     {
-        $instance = new Transaction;
+        return config('webpay.transaction_instance')
+            ? static::createTransactionForProduction()
+            : static::createTransactionForIntegration();
+    }
 
-        if (! config('webpay.in_production')) {
-            return $instance;
-        }
+    protected static function createTransactionForIntegration(): Transaction
+    {
+        $api_key = '579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C';
+        $commerce_code = '597055555532';
 
+        return Transaction::buildForIntegration($api_key, $commerce_code);
+    }
+
+    protected static function createTransactionForProduction(): Transaction
+    {
         static::checkProductionKeys();
 
-        return $instance->configureForProduction(
-            config('webpay.commerce_code'),
-            config('webpay.secret_key')
-        );
+        return Transaction::buildForProduction(config('webpay.secret_key'), config('webpay.commerce_code'));
     }
 
     protected static function hasKeys(): bool
