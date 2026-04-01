@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-webpay` will be documented in this file.
 
+## 2.0.1 - 2026-04-01
+
+### What's Changed
+
+* Update transbank/transbank-sdk requirement from ^4.0 to ^5.1 by @dependabot[bot] in https://github.com/sextanet/laravel-webpay/pull/16
+* feat: release 2.0.0 by @sebacarrasco93 in https://github.com/sextanet/laravel-webpay/pull/18
+* feat: add support to Laravel 13 by @sebacarrasco93 in https://github.com/sextanet/laravel-webpay/pull/21
+* merge: dev into 2.x by @sebacarrasco93 in https://github.com/sextanet/laravel-webpay/pull/22
+
+**Full Changelog**: https://github.com/sextanet/laravel-webpay/compare/1.0.4...2.0.1
+
 ## 1.0.2 - 2025-06-13
 
 ### What's Changed
