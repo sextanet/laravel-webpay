@@ -18,7 +18,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         php: [8.3]
-        laravel: [10.*, 11.*, 12.*]
+        laravel: [10.*, 11.*, 12.*, 13.*]
         stability: [prefer-stable]
         include:
           - laravel: 10.*
@@ -30,12 +30,15 @@ jobs:
           - laravel: 12.*
             testbench: 10.*
             carbon: ^3.00
+          - laravel: 13.*
+            testbench: 11.*
+            carbon: ^3.00
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -63,4 +66,4 @@ jobs:
         run: composer show -D
 
       - name: Execute tests
-        run: vendor/bin/pest --ci
+        run: vendor/bin/pest --ci --no-coverage
