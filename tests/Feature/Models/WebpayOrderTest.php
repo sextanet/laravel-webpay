@@ -33,7 +33,7 @@ describe('find by token', function () {
         ]);
 
         WebpayOrder::findByToken(12346);
-    })->expectException(\Exception::class);
+    })->expectException(Exception::class);
 });
 
 describe('find by buyOrder', function () {
@@ -54,7 +54,7 @@ describe('find by buyOrder', function () {
         ]);
 
         WebpayOrder::findByBuyOrder(12346);
-    })->expectException(\Exception::class);
+    })->expectException(Exception::class);
 });
 
 it('knows what are old', function () {
