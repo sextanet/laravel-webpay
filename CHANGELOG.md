@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-webpay` will be documented in this file.
 
+## 2.0.2 - 2026-04-13
+
+### What's Changed
+
+* update: stefanzweifel/git-auto-commit-action@v7 by @sebacarrasco93 in https://github.com/sextanet/laravel-webpay/pull/23
+* merge: dev into 2.x by @sebacarrasco93 in https://github.com/sextanet/laravel-webpay/pull/24
+* fix: remove abstract model into model by @sebacarrasco93 in https://github.com/sextanet/laravel-webpay/pull/26
+
+**Full Changelog**: https://github.com/sextanet/laravel-webpay/compare/2.0.1...2.0.2
+
 ## 2.0.1 - 2026-04-01
 
 ### What's Changed
